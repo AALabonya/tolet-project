@@ -281,7 +281,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
             <div className="bg-white px-4 py-5 rounded-lg ">
               <div className="relative grid h-[20rem] w-full max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
                 <div
-                  className="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-black/40   bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
+                  className="absolute inset-0 m-0 h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150 w-full overflow-hidden rounded-none bg-black/40   bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
                   style={{
                     backgroundImage: `url('http://localhost:5000/images/${roommate?.roomateList?.images[0]}')`,
                   }}
@@ -311,12 +311,12 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
                     </button>
                   </div>
                 </div>
-                <div className="relative top-1 p-6 px-6 py-6 md:px-5">
+                <div className="relative lg:top-1 -top-24 md:-top-10 p-6 px-6 lg:py-6 md:px-5">
                   <img
                     alt="user"
                     src={`http://localhost:5000/images/${roommate?.roomateList?.contact_person
                     ?.image}`}
-                    className="relative inline-block h-[80px] w-[80px] !rounded-lg border-2 border-white object-cover object-center"
+                    className="relative inline-block h-[50px] w-[50px] md:h-[70px] md:w-[70px] lg:h-[80px] lg:w-[80px] !rounded-lg border-2 border-white object-cover object-center"
                   />
                 </div>
               </div>

@@ -364,8 +364,8 @@ export default function CreateFlatListForm() {
                                                         Date
                                                     </InputLabel>
                                                     <TextField
+                                                       fullWidth
                                                         required
-                                                        fullWidth
                                                         name="date"
                                                         type="date"
                                                         onChange={handleChange}
@@ -537,7 +537,7 @@ export default function CreateFlatListForm() {
                                                         type="number"
                                                         autoComplete="number"
                                                         autoFocus
-                                                        placeholder="Postal code"
+                                                        placeholder="Zip code (optional)"
                                                         onChange={handleChange}
                                                     />
                                                 </Grid>
@@ -1102,7 +1102,7 @@ export default function CreateFlatListForm() {
                                                                 type="number"
                                                                 autoComplete="number"
                                                                 autoFocus
-                                                                placeholder="Postal code"
+                                                                placeholder="Zip code (optional)"
                                                                 onChange={
                                                                     handleChange
                                                                 }

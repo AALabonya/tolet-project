@@ -638,18 +638,29 @@ export default function CreateFlatListForm() {
                                 />
                               </Grid>
                             </Grid>
-                            <Button
-                              type="submit"
-                              fullWidth
-                              onClick={handleSubmit}
-                              variant="contained"
-                              sx={{
-                                mt: 3,
-                                mb: 2,
-                              }}
-                            >
-                              Submit
-                            </Button>
+                            {
+                                                          formData.type &&
+                                                          formData.date &&
+                                                          formData.bedroom &&
+                                                          formData.bathroom &&
+                                                          formData.size &&
+                                                          formData.rent &&
+                                                          cityName &&
+                                                          address && images.length > 0 && formData.firstName &&  formData.lastName && formData.userCity && formData.phone && image ? <Button
+                                                          type="submit"
+                                                          fullWidth
+                                                          onClick={
+                                                              handleSubmit
+                                                          }
+                                                          variant="contained"
+                                                          sx={{
+                                                              mt: 3,
+                                                              mb: 2,
+                                                          }}
+                                                      >
+                                                          Submit
+                                                      </Button> : <button disabled className="bg-gray-300 w-full py-2 px-3 my-2">Submit</button>
+                                                        }
                           </Box>
                         </Paper>
                       </div>
@@ -657,31 +668,52 @@ export default function CreateFlatListForm() {
                   )}
                 </Typography>
                 <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    pt: 2,
-                  }}
-                >
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  <Box sx={{ flex: "1 1 auto" }} />
-                  {isStepOptional(activeStep) && (
-                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                      Skip
-                    </Button>
-                  )}
-
-                  <Button onClick={handleNext1}>
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
-                </Box>
+                                    sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        pt: 2,
+                                    }}
+                                >
+                                    <Button
+                                        color="inherit"
+                                        disabled={activeStep === 0}
+                                        onClick={handleBack}
+                                        sx={{ mr: 1 }}
+                                    >
+                                        Back
+                                    </Button>
+                                    <Box sx={{ flex: "1 1 auto" }} />
+                                    {isStepOptional(activeStep) && (
+                                        <Button
+                                            color="inherit"
+                                            onClick={handleSkip}
+                                            sx={{ mr: 1 }}
+                                        >
+                                            Skip
+                                        </Button>
+                                    )}
+                                    {activeStep === 0 && formData.type &&
+                                        formData.date &&
+                                        formData.bedroom &&
+                                        formData.bathroom &&
+                                        formData.size &&
+                                        formData.rent &&
+                                        cityName &&
+                                        address && (
+                                            <Button onClick={handleNext1}>
+                                                {activeStep === steps.length - 1
+                                                    ? "Finish"
+                                                    : "Next"}
+                                            </Button>
+                                        )}
+                                    {activeStep === 1 && images.length > 0 && (
+                                            <Button onClick={handleNext1}>
+                                                {activeStep === steps.length - 1
+                                                    ? "Finish"
+                                                    : "Next"}
+                                            </Button>
+                                        )}
+                                </Box>
               </React.Fragment>
             )}
           </Box>

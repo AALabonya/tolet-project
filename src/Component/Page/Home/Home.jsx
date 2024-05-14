@@ -220,7 +220,7 @@ const fetchData = async () => {
                     >
                       <svg
                         width={30}
-                        className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black"
+                        className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                         style={{ cursor: "pointer" }}
@@ -238,7 +238,7 @@ const fetchData = async () => {
                     </button>
                   </div>
                   <img
-                    className="rounded-xl bg-black/40 w-full h-[200px] md:h-[280px] lg:h-[309px] border border-gray-150"
+                    className="rounded-xl bg-black/40 w-full h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150"
                     src={`http://localhost:5000/images/${flat.flatList.images[0]}`}
                     alt="Flat Image"
                   />
@@ -282,7 +282,7 @@ const fetchData = async () => {
               <button
                 key={i}
                 onClick={() => paginate(i + 1)}
-                className={`join-item px-4 md:px-4 md:text-base btn rounded-md btn-outline mr-2 ${
+                className={`join-item px-3 md:px-4 md:text-base btn rounded-md btn-outline mr-2 ${
                   currentPage === i + 1 ? "bg-green-400 text-white" : ""
                 }`}
               >

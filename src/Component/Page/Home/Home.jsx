@@ -220,7 +220,7 @@ const fetchData = async () => {
                     >
                       <svg
                         width={30}
-                        className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
+                        className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                         style={{ cursor: "pointer" }}

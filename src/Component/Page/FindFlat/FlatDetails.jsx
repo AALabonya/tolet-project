@@ -468,10 +468,10 @@ const FlatDetails = () => {
                         </div>
                         {/* div for right side */}
                         <div className="flex flex-col gap-3">
-                            <div className="h-auto p-5 md:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+                            <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                                 <div>
                                     <div className="flex items-center justify-between">
-                                        <h2 className="text-3xl font-bold md:my-5">
+                                        <h2 className="lg:text-3xl md:text-base font-bold md:my-5">
                                             $
                                             {
                                                 flatData?.flatList?.description
@@ -525,7 +525,7 @@ const FlatDetails = () => {
                                     onClick={() => setOpenReportModal(true)}
                                     className="rounded-md  text-black"
                                 >
-                                    <div className="md:w-[400px] w-96 max-w-[400px] h-fit p-5 underline flex justify-center items-center gap-5">
+                                    <div className="md:w-[360px] lg:w-[400px] w-96 max-w-[400px] h-fit p-5 underline flex justify-center items-center gap-5">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="1em"

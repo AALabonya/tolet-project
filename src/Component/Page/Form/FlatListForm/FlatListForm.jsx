@@ -317,7 +317,7 @@ export default function CreateFlatListForm() {
                                     sx={{ mt: 2, mb: 1 }}
                                     style={{ marginTop: "45px" }}
                                 >
-                                    {activeStep === 0 && (
+                                    {activeStep === 0 &&(
                                         <form>
                                             <Grid container spacing={1}>
                                                 <Grid item sm={12} md={6}>

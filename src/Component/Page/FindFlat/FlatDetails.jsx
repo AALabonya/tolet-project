@@ -86,40 +86,100 @@ const FlatDetails = () => {
         <>
             {/* details hero section  */}
             <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3">
-                <div className="lg:w-[50%]">
+                <div className="lg:w-[50%] relative">
                     <img
                         src={`http://localhost:5000/images/${flatData?.flatList?.images[0]}`}
                         alt=""
-                        className="h-[500px] w-full rounded-l-2xl"
+                        className="h-[500px] w-full rounded-l-2xl border border-gray-150"
                     />
+                    <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden ">
+                            <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2  mr-3">
+                                <div>
+                                    <button
+                                        onClick={() => setOpenModal(true)}
+                                        className="rounded-sm  px-5 py-[6px] text-black"
+                                        id="_modal_NavigateUI"
+                                    >
+                                        Show All Photo
+                                    </button>
+                                    <div
+                                        onClick={() => setOpenModal(false)}
+                                        className={`fixed z-[100] flex items-center justify-center ${
+                                            openModal
+                                                ? "visible opacity-100"
+                                                : "invisible opacity-0"
+                                        } inset-0  backdrop-blur-sm duration-100 `}
+                                    >
+                                        <div
+                                            onClick={(e_) =>
+                                                e_.stopPropagation()
+                                            }
+                                            className={`text- absolute max-w-xl rounded-sm h-96 lg:w-[700px] overflow-y-auto bg-white p-6 drop-shadow-lg ${
+                                                openModal
+                                                    ? "scale-1 opacity-1 duration-300"
+                                                    : "scale-0 opacity-0 duration-150"
+                                            }`}
+                                        >
+                                            <h1 className="mb-2 text-2xl font-semibold">
+                                                All Flat Images!
+                                            </h1>
+                                            {allFlatImages.map(
+                                                (image, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="flex-1 gap-2 "
+                                                    >
+                                                        <img
+                                                            src={`http://localhost:5000/images/${image}`}
+                                                            alt=""
+                                                            className="h-[500px] w-full mb-4"
+                                                        />
+                                                    </div>
+                                                )
+                                            )}
+                                            <div className="flex justify-end">
+                                                <button
+                                                    onClick={() =>
+                                                        setOpenModal(false)
+                                                    }
+                                                    className="rounded-sm border border-red-600 px-6 py-[6px] text-red-600 duration-150 hover:bg-red-600 hover:text-white"
+                                                >
+                                                    X
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  h-[500px] gap-3">
                     <div className="bg-cover overflow-hidden relative ">
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[1]}`}
                             alt=""
-                            className="w-full h-full "
+                            className="w-full h-full border border-gray-150"
                         />
                     </div>
                     <div className="bg-cover overflow-hidden relative rounded-tr-2xl">
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[2]}`}
                             alt=""
-                            className="w-full h-full "
+                            className="w-full h-full border border-gray-150"
                         />
                     </div>
                     <div className="bg-cover overflow-hidden relative">
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[3]}`}
                             alt=""
-                            className="w-full h-full "
+                            className="w-full h-full border border-gray-150"
                         />
                     </div>
                     <div className="bg-cover overflow-hidden relative ">
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[4]}`}
                             alt=""
-                            className="w-full h-full rounded-br-2xl "
+                            className="w-full h-full rounded-br-2xl border border-gray-150"
                         />
                         <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
                             <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2  mr-3">

@@ -90,7 +90,7 @@ const FlatDetails = () => {
                     <img
                         src={`http://localhost:5000/images/${flatData?.flatList?.images[0]}`}
                         alt=""
-                        className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[300px] w-full rounded-2xl lg:rounded-l-2xl border border-gray-150 mb-3"
+                        className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-l-2xl border border-gray-150 mb-3"
                     />
                     <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden ">
                             <div className=" bg-white text-black rounded-lg shadow-lg border-2  mr-3">
@@ -249,8 +249,8 @@ const FlatDetails = () => {
             {/* card details information  */}
             <div>
                 {/* details sections starts */}
-                <div className="mx-auto lg:mt-16 px-12">
-                    <div className="flex justify-center gap-24">
+                <div className="mx-auto lg:mt-16 md:px-12">
+                    <div className="flex justify-center md:gap-24">
                         <div className=" md:px-0  ">
                             <div className=" px-5 md:px-0 ">
                                 <div className="mb-16 flex-1 justify-center">
@@ -468,7 +468,7 @@ const FlatDetails = () => {
                         </div>
                         {/* div for right side */}
                         <div className="flex flex-col gap-3">
-                            <div className="h-auto p-5 md:w-[400px] max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+                            <div className="h-auto p-5 md:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                                 <div>
                                     <div className="flex items-center justify-between">
                                         <h2 className="text-3xl font-bold md:my-5">
@@ -525,7 +525,7 @@ const FlatDetails = () => {
                                     onClick={() => setOpenReportModal(true)}
                                     className="rounded-md  text-black"
                                 >
-                                    <div className="md:w-[400px] max-w-[400px] h-fit p-5 underline flex justify-center items-center gap-5">
+                                    <div className="md:w-[400px] w-96 max-w-[400px] h-fit p-5 underline flex justify-center items-center gap-5">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="1em"

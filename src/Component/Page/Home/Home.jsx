@@ -238,7 +238,7 @@ const fetchData = async () => {
                     </button>
                   </div>
                   <img
-                    className="rounded-xl bg-black/40 w-full h-[309px]"
+                    className="rounded-xl bg-black/40 w-full h-[200px] md:h-[280px] lg:h-[309px] border border-gray-150"
                     src={`http://localhost:5000/images/${flat.flatList.images[0]}`}
                     alt="Flat Image"
                   />
@@ -268,13 +268,13 @@ const fetchData = async () => {
   
         {/* for pagination */}
   
-        <div className=" flex flex-wrap justify-center mb-10 mt-24 gap-5">
+        <div className=" flex flex-wrap justify-center mb-10 mt-24 gap-2 md:gap-5">
           <button
-            className="join-item btn btn-outline mr-2"
+            className="join-item px-2 py-1 md:text-base text-sm rounded-md btn btn-outline mr-2"
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            &larr; Previous page
+            &larr; Previous
           </button>
           {Array.from(
             { length: Math.ceil(flatData.length / flatsPerPage) },
@@ -282,7 +282,7 @@ const fetchData = async () => {
               <button
                 key={i}
                 onClick={() => paginate(i + 1)}
-                className={`join-item btn btn-outline mr-2 ${
+                className={`join-item px-4 md:px-4 md:text-base btn rounded-md btn-outline mr-2 ${
                   currentPage === i + 1 ? "bg-green-400 text-white" : ""
                 }`}
               >
@@ -291,7 +291,7 @@ const fetchData = async () => {
             )
           )}
           <button
-            className="join-item btn btn-outline mr-2"
+            className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-2"
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === Math.ceil(flatData.length / flatsPerPage)}
           >

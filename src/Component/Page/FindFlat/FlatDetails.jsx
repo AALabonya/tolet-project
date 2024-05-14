@@ -85,12 +85,12 @@ const FlatDetails = () => {
     return (
         <>
             {/* details hero section  */}
-            <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3">
+            <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3 mb-5">
                 <div className="lg:w-[50%] relative ">
                     <img
                         src={`http://localhost:5000/images/${flatData?.flatList?.images[0]}`}
                         alt=""
-                        className="lg:h-[800px] md:h-[400px] lg:max-h-[500px] max-h-[300px] w-full rounded-l-2xl border border-gray-150"
+                        className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[300px] w-full rounded-2xl lg:rounded-l-2xl border border-gray-150 mb-3"
                     />
                     <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden ">
                             <div className=" bg-white text-black rounded-lg shadow-lg border-2  mr-3">
@@ -159,21 +159,21 @@ const FlatDetails = () => {
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[1]}`}
                             alt=""
-                            className="w-full h-full border border-gray-150 md:block hidden"
+                            className="w-full h-full border border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
                         />
                     </div>
-                    <div className="bg-cover overflow-hidden relative rounded-tr-2xl">
+                    <div className="bg-cover overflow-hidden relative rounded-tr-2xl ">
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[2]}`}
                             alt=""
-                            className="w-full h-full border border-gray-150 md:block hidden"
+                            className="w-full h-full border border-gray-150 md:block hidden "
                         />
                     </div>
-                    <div className="bg-cover overflow-hidden relative">
+                    <div className="bg-cover overflow-hidden relative ">
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[3]}`}
                             alt=""
-                            className="w-full h-full border border-gray-150 md:block hidden"
+                            className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl  lg:rounded-tl"
                         />
                     </div>
                     <div className="bg-cover overflow-hidden relative ">
@@ -249,10 +249,10 @@ const FlatDetails = () => {
             {/* card details information  */}
             <div>
                 {/* details sections starts */}
-                <div className="mx-auto lg:mt-16 lg:px-16 ">
-                    <div className="flex flex-col md:flex-row justify-center gap-6">
-                        <div className=" md:px-0 md:w-3/4 ">
-                            <div className=" px-5 md:px-0 md:w-3/4">
+                <div className="mx-auto lg:mt-16 px-12">
+                    <div className="flex justify-center gap-24">
+                        <div className=" md:px-0  ">
+                            <div className=" px-5 md:px-0 ">
                                 <div className="mb-16 flex-1 justify-center">
                                     <div className="mb-5">
                                         <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
@@ -331,7 +331,7 @@ const FlatDetails = () => {
                             <div>
                                 <button
                                     onClick={() => setOpenReportModal(true)}
-                                    className="rounded-md  px-5 py-[6px]  text-black  block md:hidden"
+                                    className="rounded-md  px-5 py-[6px]  text-black  block md:hidden text-sm md:text-base"
                                 >
                                     <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
                                         <svg
@@ -467,8 +467,8 @@ const FlatDetails = () => {
                             </div>
                         </div>
                         {/* div for right side */}
-                        <div className="flex flex-col gap-3 px-6 ">
-                            <div className="h-auto p-5 lg:w-[416px] md:w-[356px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+                        <div className="flex flex-col gap-3">
+                            <div className="h-auto p-5 md:w-[400px] max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                                 <div>
                                     <div className="flex items-center justify-between">
                                         <h2 className="text-3xl font-bold md:my-5">
@@ -523,9 +523,9 @@ const FlatDetails = () => {
                             <div className="md:block hidden">
                                 <button
                                     onClick={() => setOpenReportModal(true)}
-                                    className="rounded-md  px-5 py-[6px]  text-black"
+                                    className="rounded-md  text-black"
                                 >
-                                    <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
+                                    <div className="md:w-[400px] max-w-[400px] h-fit p-5 underline flex justify-center items-center gap-5">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="1em"

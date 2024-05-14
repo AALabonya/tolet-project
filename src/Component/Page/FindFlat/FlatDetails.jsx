@@ -90,7 +90,7 @@ const FlatDetails = () => {
                     <img
                         src={`http://localhost:5000/images/${flatData?.flatList?.images[0]}`}
                         alt=""
-                        className="lg:h-[500px] md:h-[400px] w-full rounded-l-2xl border border-gray-150"
+                        className="lg:h-[800px] md:h-[400px] lg:max-h-[500px] max-h-[300px] w-full rounded-l-2xl border border-gray-150"
                     />
                     <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden ">
                             <div className=" bg-white text-black rounded-lg shadow-lg border-2  mr-3">
@@ -251,9 +251,9 @@ const FlatDetails = () => {
                 {/* details sections starts */}
                 <div className="mx-auto lg:mt-16 lg:px-16 ">
                     <div className="flex flex-col md:flex-row justify-center gap-6">
-                        <div className=" md:px-0 md:w-3/4">
+                        <div className=" md:px-0 md:w-3/4 ">
                             <div className=" px-5 md:px-0 md:w-3/4">
-                                <div className="mb-16">
+                                <div className="mb-16 flex-1 justify-center">
                                     <div className="mb-5">
                                         <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                                             Home Type: {" "}
@@ -275,8 +275,8 @@ const FlatDetails = () => {
                                             }
                                         </p>
                                     </div>
-                                    <div className="flex flex-col gap-3 md:px-6">
-                                  <div className="h-auto p-5 lg:w-[416px] md:w-[356px] w-[290px]  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+                                    <div className="flex flex-col gap-3 md:px-6 mt-4">
+                                  <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                                 <div>
                                     <div className="flex items-center justify-between">
                                         <h2 className="lg:text-3xl font-bold md:my-5">
@@ -331,7 +331,7 @@ const FlatDetails = () => {
                             <div>
                                 <button
                                     onClick={() => setOpenReportModal(true)}
-                                    className="rounded-md  px-5 py-[6px]  text-black"
+                                    className="rounded-md  px-5 py-[6px]  text-black  block md:hidden"
                                 >
                                     <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
                                         <svg

@@ -204,6 +204,11 @@ export default function CreateFlatListForm() {
   };
   //new code
 
+  //addressChanged Handler
+  const closeHandleModal=()=>{
+    setOpenModal(false)
+    setShowAddress(false)
+   }
   const [skipped, setSkipped] = React.useState(new Set());
 
   const isStepOptional = (step) => {
@@ -490,14 +495,7 @@ export default function CreateFlatListForm() {
                               onChange={(e) => setAddress(e.target.value)}
                             />
                           )}
-                            <div
-                              onClick={() => setShowAddress(!showAddress)}
-                              className="cursor-pointer"
-                            >
-                              {showAddress
-                                ? "Add Manually Address"
-                                : "Default Address"}
-                            </div>
+                           
                         </Grid>}
 
                         <Grid item sm={12} md={6}>
@@ -988,20 +986,7 @@ export default function CreateFlatListForm() {
                                   onChange={handleChange}
                                 />
                               </Grid>
-                              {/* <Grid item sm={12} md={6}>
-                                <InputLabel>Address</InputLabel>
-                                <TextField
-                                  required
-                                  fullWidth
-                                  value={address}
-                                  id="name"
-                                  name="address"
-                                  autoComplete="address"
-                                  autoFocus
-                                  placeholder="Address"
-                                  onChange={handleChange}
-                                />
-                              </Grid> */}
+                              
                               <Grid item sm={12} md={6}>
                                 <InputLabel>City</InputLabel>
                                 <FormControl
@@ -1057,14 +1042,7 @@ export default function CreateFlatListForm() {
                               onChange={(e) => setAddress(e.target.value)}
                             />
                           )}
-                            <div
-                              onClick={() => setShowAddress(!showAddress)}
-                              className="cursor-pointer"
-                            >
-                              {showAddress
-                                ? "Add Manually Address"
-                                : "Default Address"}
-                            </div>
+                           
                         </Grid>}
                               <Grid item sm={12} md={6}>
                                 <InputLabel>Zip Code</InputLabel>
@@ -1478,7 +1456,7 @@ export default function CreateFlatListForm() {
           >
             <div className="flex justify-end mb-3">
               <button
-                onClick={() => setOpenModal(false)}
+                onClick={closeHandleModal}
                 className=" rounded-md border border-rose-600 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white"
               >
                 X

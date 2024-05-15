@@ -139,7 +139,7 @@ console.log(maps);
           <img
             src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[0]}`}
             alt=""
-            className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
+            className="lg:h-[800px] md:h-[400px] object-cover md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
            <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden">
               <div className=" bg-white text-black rounded-lg shadow-lg border-2 mr-3">
@@ -181,7 +181,7 @@ console.log(maps);
                           <img
                             src={`http://localhost:5000/images/${image}`}
                             alt=""
-                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                            className="lg:h-[500px] md:h-[400px] object-cover h-56 w-full mb-4 border border-gray-150 rounded-md"
                           />
                         </div>
                       ))}
@@ -197,28 +197,28 @@ console.log(maps);
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[1]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
+              className="w-full h-full border object-cover border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-tr-2xl ">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[2]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden "
+              className="w-full h-full border object-cover border-gray-150 md:block hidden "
             />
           </div>
           <div className="bg-cover overflow-hidden relative">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[3]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
+              className="w-full h-full border object-cover border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-br-2xl">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[4]}`}
               alt=""
-              className="w-full h-full rounded-br-2xl border border-gray-150 md:block hidden"
+              className="w-full h-full object-cover rounded-br-2xl border border-gray-150 md:block hidden"
             />
             <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
               <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2  mr-3 md:block hidden">
@@ -260,7 +260,7 @@ console.log(maps);
                           <img
                             src={`http://localhost:5000/images/${image}`}
                             alt=""
-                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                            className="lg:h-[500px] md:h-[400px] object-cover h-56 w-full mb-4 border border-gray-150 rounded-md"
                           />
                         </div>
                       ))}
@@ -285,7 +285,7 @@ console.log(maps);
                      <img
                        src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.contact_person?.image}`}
                        alt=""
-                       className="lg:w-16 md:w-32 md:h-14 lg:h-16 rounded-lg w-28 h-14"
+                       className="lg:w-16 md:w-32 object-cover md:h-14 lg:h-16 rounded-lg w-28 h-14"
                      />
                    </div>
                    <div>
@@ -323,23 +323,6 @@ console.log(maps);
                  <h2 className="lg:text-3xl font-bold md:my-5">
                      ${details.roommateWishList?.roomateList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -448,23 +431,7 @@ console.log(maps);
                    <h2 className="text-3xl font-bold my-5">
                      ${details.roommateWishList?.roomateList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
+                 
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -507,7 +474,7 @@ console.log(maps);
           <img
             src={`http://localhost:5000/images/${details.flatWishList?.flatList?.images[0]}`}
             alt=""
-            className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
+            className="lg:h-[800px] md:h-[400px] object-cover md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
            <div className="absolute left-0  bottom-[5%] w-full flex justify-end text-center md:hidden ">
               <div className=" bg-white text-black rounded-lg shadow-lg border-2 mr-3">
@@ -549,7 +516,7 @@ console.log(maps);
                           <img
                             src={`http://localhost:5000/images/${image}`}
                             alt=""
-                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                            className="lg:h-[500px] object-cover md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
                           />
                         </div>
                       ))}
@@ -565,28 +532,28 @@ console.log(maps);
             <img
               src={`http://localhost:5000/images/${details?.flatWishList?.flatList?.images[1]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
+              className="w-full h-full border object-cover border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-tr-2xl ">
             <img
               src={`http://localhost:5000/images/${details?.flatWishList?.flatList?.images[2]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden "
+              className="w-full h-full object-cover border border-gray-150 md:block hidden "
             />
           </div>
           <div className="bg-cover overflow-hidden relative">
             <img
               src={`http://localhost:5000/images/${details?.flatWishList?.flatList?.images[3]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
+              className="w-full h-full object-cover border border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-br-2xl">
             <img
               src={`http://localhost:5000/images/${details?.flatWishList?.flatList?.images[4]}`}
               alt=""
-              className="w-full h-full rounded-br-2xl border border-gray-150 md:block hidden"
+              className="w-full h-full object-cover rounded-br-2xl border border-gray-150 md:block hidden"
             />
             <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
               <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2  mr-3 md:block hidden">
@@ -620,7 +587,7 @@ console.log(maps);
                           <img
                             src={`http://localhost:5000/images/${image}`}
                             alt=""
-                            className="h-[500px] w-full mb-4"
+                            className="lg:h-[500px] object-cover md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
                           />
                         </div>
                       ))}
@@ -643,7 +610,7 @@ console.log(maps);
   {/* details sections starts */}
   <div className="mx-auto lg:mt-16 md:px-9 md:mt-7 mt-4">
          <div className="flex justify-around  md:gap-24">
-           <div className=" md:px-0  ">
+           <div className=" md:px-0 md:w-3/4 ">
              <div className=" px-5 md:px-0 ">
                <div className="mb-16 flex-1 justify-center">
                  <div className="mb-5 flex justify-start gap-10">
@@ -682,23 +649,7 @@ console.log(maps);
                    <h2 className="lg:text-3xl font-bold md:my-5">
                      ${details?.flatWishList?.flatList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
+            
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -780,23 +731,7 @@ console.log(maps);
                    <h2 className="text-3xl font-bold my-5">
                      ${details?.flatWishList?.flatList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
+                  
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  

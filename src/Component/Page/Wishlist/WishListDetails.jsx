@@ -134,15 +134,15 @@ console.log(maps);
       {details.roommateWishList && (
         <div>
 
-        <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3">
+        <div className="w-11/12 mx-auto lg:flex mt-3 md:rounded-lg lg:rounded-none gap-3 md:mb-5">
         <div className="lg:w-[50%] relative">
           <img
             src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[0]}`}
             alt=""
-            className=" h-[500px] w-full rounded-l-2xl"
+            className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
            <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden">
-              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 mr-3">
+              <div className=" bg-white text-black rounded-lg shadow-lg border-2 mr-3">
                 <div>
                   <button
                     onClick={() => setOpenModal(true)}
@@ -192,36 +192,36 @@ console.log(maps);
               </div>
             </div>
         </div>
-        <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  h-[500px] gap-3">
+        <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  md:h-[500px] gap-3">
           <div className="bg-cover overflow-hidden relative ">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[1]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
             />
           </div>
-          <div className="bg-cover overflow-hidden relative rounded-tr-2xl">
+          <div className="bg-cover overflow-hidden relative rounded-tr-2xl ">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[2]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 md:block hidden "
             />
           </div>
           <div className="bg-cover overflow-hidden relative">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[3]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-br-2xl">
             <img
               src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[4]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full rounded-br-2xl border border-gray-150 md:block hidden"
             />
             <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
-              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 mr-3">
+              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2  mr-3 md:block hidden">
                 <div>
                   <button
                     onClick={() => setOpenModal(true)}
@@ -274,22 +274,22 @@ console.log(maps);
         </div>
       </div>
   {/* details sections starts */}
-  <div className="mx-auto mt-16 md:px-16 ">
-         <div className="flex flex-col md:flex-row gap-6">
-           <div className="main_details px-5 md:px-0 md:w-3/4">
-             <div className=" px-5 md:px-0 md:w-3/4">
-               <div className="mb-16">
+  <div className="mx-auto lg:mt-16 md:px-12">
+         <div className="flex justify-center md:gap-24">
+           <div className=" md:px-0  ">
+             <div className=" px-5 md:px-0 ">
+               <div className="mb-16 flex-1 justify-center">
                  <div className="mb-5 flex justify-start gap-10">
                    <div>
                      {" "}
                      <img
                        src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.contact_person?.image}`}
                        alt=""
-                       className="w-16 h-16 rounded-lg"
+                       className="lg:w-16 md:w-32 md:h-14 lg:h-16 rounded-lg w-28 h-14"
                      />
                    </div>
                    <div>
-                     <h2 className="lg:text-xl font-medium text-black">
+                     <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        User Name:{" "}
                        {
                          details.roommateWishList?.roomateList?.contact_person
@@ -297,11 +297,11 @@ console.log(maps);
                        }{" "}
                        {details.roommateWishList?.roomateList?.contact_person?.lastName}
                      </h2>
-                     <h2 className="lg:text-xl font-medium text-black">
+                     <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        Home type:{" "}
                        {details.roommateWishList?.roomateList?.description?.bedroomType}
                      </h2>
-                     <p className="text-black  font-medium inline-block md:text-lg mt-1">
+                     <p className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        Location:{" "}
                        {
                          details.roommateWishList?.roomateList?.description?.location
@@ -315,11 +315,58 @@ console.log(maps);
                      </p>
                    </div>
                  </div>
+                 {/* div for right side */}
+                 <div className="flex flex-col gap-3 md:px-6 mt-4">
+                                  <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+               <div>
+                 <div className="flex items-center justify-between">
+                 <h2 className="lg:text-3xl font-bold md:my-5">
+                     ${details.roommateWishList?.roomateList?.description?.rent}
+                   </h2>
+                   <svg
+                     width={30}
+                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
+                     viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg"
+                     style={{ cursor: "pointer" }}
+                   >
+                     <g strokeWidth="0"></g>
+                     <g
+                       id="SVGRepo_tracerCarrier"
+                       strokeLinecap="round"
+                       strokeLinejoin="round"
+                     ></g>
+                     <g id="SVGRepo_iconCarrier">
+                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
+                     </g>
+                   </svg>
+                 </div>
+                 <button
+                   className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
+                                transition-all duration-500 capitalize items-center flex justify-center gap-5"
+                 >
+                   <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="1em"
+                     height="1em"
+                     viewBox="0 0 24 24"
+                   >
+                     <path
+                       fill="currentColor"
+                       d="m19.23 15.26l-2.54-.29a1.99 1.99 0 0 0-1.64.57l-1.84 1.84a15.045 15.045 0 0 1-6.59-6.59l1.85-1.85c.43-.43.64-1.03.57-1.64l-.29-2.52a2.001 2.001 0 0 0-1.99-1.77H5.03c-1.13 0-2.07.94-2 2.07c.53 8.54 7.36 15.36 15.89 15.89c1.13.07 2.07-.87 2.07-2v-1.73c.01-1.01-.75-1.86-1.76-1.98"
+                     />
+                   </svg>
+                   +88 {details.roommateWishList?.roomateList?.contact_person?.phone}
+                 </button>
+               </div>
+             </div>
+            
+           </div>
                  <div className="border-t-2 border-b-2">
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
+                   <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
                      Personal Information
                    </h1>
-                   <ul className="mb-8 lg:text-lg  text-black">
+                   <ul className="mb-8 lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                      <li>
                        - Name :{" "}
                        {
@@ -346,23 +393,21 @@ console.log(maps);
                        }
                      </li>
                    </ul>
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
-                     Match Preferences
-                   </h1>
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
+    
+                   <h1 className="mt-8   mb-[12px] lg:text-3xl text-sm md:text-base capitalize  font-medium text-black">
                      Home Details
                    </h1>
-                   <ul className="mb-8 lg:text-xl  text-black">
+                   <ul className="mb-8 lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                      <li>
                        - Bedroom Type :{" "}
                        {details.roommateWishList?.roomateList?.description?.bedroomType}
                      </li>
                    </ul>
 
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
+                   <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
                      Flatmate Preferences
                    </h1>
-                   <ul className="mb-8 lg:text-lg  text-black">
+                   <ul className="mb-8 lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                      <li>
                        - Gender :{" "}
                        {
@@ -396,8 +441,8 @@ console.log(maps);
              </div>
            </div>
            {/* div for right side */}
-           <div className="flex flex-col gap-3 px-6">
-             <div className="h-auto p-5 md:w-[416px] max-w-[416px] mt-3 shadow-lg border border-gray-150 rounded-lg">
+           <div className="flex flex-col gap-3">
+             <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                <div>
                  <div className="flex items-center justify-between">
                    <h2 className="text-3xl font-bold my-5">

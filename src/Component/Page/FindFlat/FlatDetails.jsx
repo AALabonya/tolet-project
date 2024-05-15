@@ -258,7 +258,7 @@ const FlatDetails = () => {
       {/* card details information  */}
       <div>
         {/* details sections starts */}
-        <div className="mx-auto lg:mt-16 md:px-12">
+        <div className="mx-auto lg:mt-16 md:px-16 md:mt-7 mt-4">
           <div className="flex justify-center md:gap-24 ">
             <div className=" md:px-0 md:w-3/4 ">
               <div className=" md:px-0 ">

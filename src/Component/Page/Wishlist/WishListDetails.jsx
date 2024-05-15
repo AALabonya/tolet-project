@@ -274,10 +274,10 @@ console.log(maps);
         </div>
       </div>
   {/* details sections starts */}
-  <div className="mx-auto lg:mt-16 md:px-12">
+    <div className="mx-auto lg:mt-16 md:px-16 md:mt-7 mt-4">
          <div className="flex justify-center md:gap-24">
            <div className=" md:px-0  ">
-             <div className=" px-5 md:px-0 ">
+             <div className="px-5 md:px-0 ">
                <div className="mb-16 flex-1 justify-center">
                  <div className="mb-5 flex justify-start gap-10">
                    <div>
@@ -288,7 +288,7 @@ console.log(maps);
                        className="lg:w-16 md:w-32 object-cover md:h-14 lg:h-16 rounded-lg w-28 h-14"
                      />
                    </div>
-                   <div>
+                   <div className="mx-5 lg:mx-0">
                      <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        User Name:{" "}
                        {
@@ -318,7 +318,7 @@ console.log(maps);
                  {/* div for right side */}
                  <div className="flex flex-col gap-3 md:px-6 mt-4">
                                   <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
-               <div>
+               <div className="mx-5 lg:mx-0">
                  <div className="flex items-center justify-between">
                  <h2 className="lg:text-3xl font-bold md:my-5">
                      ${details.roommateWishList?.roomateList?.description?.rent}
@@ -345,7 +345,7 @@ console.log(maps);
              </div>
             
            </div>
-                 <div className="border-t-2 border-b-2">
+                 <div className="border-t-2 border-b-2 mx-5 lg:mx-0">
                    <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
                      Personal Information
                    </h1>
@@ -456,10 +456,10 @@ console.log(maps);
            </div>
          </div>
           {/* map */}
-          <div className="relative h-full max-md:min-h-[350px] mt-16 px-3">
- 
-                   {roomMap}
-                 </div>
+      {wishListData?.roommateWishList?.roomateList?.description?.location?.lat !=23.8041 && (<div className="relative h-full max-md:min-h-[350px] mt-16 px-3">
+
+                  {roomMap}
+                </div>)}
        </div>
 
    </div>
@@ -608,13 +608,13 @@ console.log(maps);
         </div>
       </div>
   {/* details sections starts */}
-  <div className="mx-auto lg:mt-16 md:px-9 md:mt-7 mt-4">
+  <div className="mx-auto lg:mt-16 md:px-16 md:mt-7 mt-4">
          <div className="flex justify-around  md:gap-24">
            <div className=" md:px-0 md:w-3/4 ">
              <div className=" px-5 md:px-0 ">
                <div className="mb-16 flex-1 justify-center">
                  <div className="mb-5 flex justify-start gap-10">
-                   <div>
+                   <div className="mx-5 lg:mx-0">
                      <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        User Name:{" "}
                        {
@@ -671,7 +671,7 @@ console.log(maps);
                </div>
              </div>
            </div>
-                 <div className="border-t-2 border-b-2">
+                 <div className="border-t-2 border-b-2 mx-5 lg:mx-0">
                    <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
                      Personal Information
                    </h1>
@@ -705,9 +705,7 @@ console.log(maps);
                        }
                      </li>
                    </ul>
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
-                     Match Preferences
-                   </h1>
+                  
                    <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
                      Home Details
                    </h1>

@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import { message } from "antd";
 const MyListing = () => {
     const [roommateData, setRoommateData] = useState([]);
     const [flatData, setFlatData] = useState([]);
@@ -17,6 +18,7 @@ const MyListing = () => {
     const [subletData, setSubletData] = useState(null);
     const [activeButton, setActiveButton] = useState("");
     const email = auths?.user?.email;
+    const user = auths?.user;
     const [dropdownOpenPage, setDropDownPage] = useState(false);
     const [dropdownOpen, setDropDown] = useState(false);
     const pageRef = useRef();
@@ -398,7 +400,8 @@ const MyListing = () => {
     const [flatOpenModal, setFlatOpenModal] = useState(false);
     const [flatCityName, setFlatCityName] = useState("");
     const [flatAddress, setFlatAddress] = useState("");
-
+  
+  
     // Custom hook to handle map events
     const MapEvent = () => {
         const maps = useMapEvents({
@@ -460,7 +463,65 @@ const MyListing = () => {
         </MapContainer>
     );
 
-    console.log("center", center);
+    // console.log("center", center);
+
+    // const addToRoommateWishlist = async (roommate) => {
+    //     console.log(roommate);
+    //     try {
+    //       const roomMates = {
+    //         userEmail: user?.email,
+    //         userId: user?._id,
+    //         roommateWishList: roommate,
+    //         flatWishList: "",
+    //       };
+    
+    //       // console.log(roomMates);
+    //      const response = await axios.post(`http://localhost:5000/wishlist`, roomMates);
+    //      if (response.status === 201) {
+    //       // console.log("Added to wishlist:", flat);
+    //       message.success("Successfully Added to Wishlist!");
+    //     } else if (response.status === 409) {
+    //       message.error("Wishlist already exists for this user.");
+    //     }
+    //   } catch (error) {
+    //     if (error.response && error.response.status === 409) {
+    //       message.error("Wishlist already exists for this user.");
+    //     } else {
+    //       console.error("Error adding to wishlist:", error);
+    //       message.error("An error occurred while adding to wishlist.");
+    //     }
+    //   }
+    // };
+
+    // //flat 
+    // const addToWishlist = async (flat) => {
+    //     console.log(flat);
+    //     try {
+    //       const flatData = {
+    //         userEmail: user?.email,
+    //         userId: user?._id,
+    //         flatWishList: flat,
+    //         roommateWishList: "",
+    //       };
+    //       // console.log("hello", flatData);
+      
+    //       const response = await axios.post(`http://localhost:5000/wishList`, flatData);
+          
+    //       if (response.status === 201) {
+    //         // console.log("Added to wishlist:", flat);
+    //         message.success("Successfully Added to Wishlist!");
+    //       } else if (response.status === 409) {
+    //         message.error("Wishlist already exists for this user.");
+    //       }
+    //     } catch (error) {
+    //       if (error.response && error.response.status === 409) {
+    //         message.error("Wishlist already exists for this user.");
+    //       } else {
+    //         console.error("Error adding to wishlist:", error);
+    //         message.error("An error occurred while adding to wishlist.");
+    //       }
+    //     }
+    //   };
     return (
         <>
             <div className="lg:px-14 flex justify-center lg:gap-10  px-2">
@@ -519,29 +580,7 @@ const MyListing = () => {
                                         <div className=" pb-6 mt-10">
                                             <div className="max-w-[350px] font-sans rounded-2xl  my-5 mx-auto ">
                                                 <div className="flex justify-center w-full relative">
-                                                    <div className="flex justify-end items-center left-4 right-4 top-4 absolute">
-                                                        <button className="flex items-center">
-                                                            <svg
-                                                                width={30}
-                                                                className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
-                                                                viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                style={{
-                                                                    cursor: "pointer",
-                                                                }}
-                                                            >
-                                                                <g strokeWidth="0"></g>
-                                                                <g
-                                                                    id="SVGRepo_tracerCarrier"
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                ></g>
-                                                                <g id="SVGRepo_iconCarrier">
-                                                                    <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                                                                </g>
-                                                            </svg>
-                                                        </button>
-                                                    </div>
+                                                   
                                                     <img
                                                         className="rounded-xl bg-black/40 object-cover w-full h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150"
                                                         src={`http://localhost:5000/images/${roommate.roomateList.images[0]}`}
@@ -1179,29 +1218,7 @@ const MyListing = () => {
                                         <div className=" pb-6 mt-10">
                                             <div className="max-w-[350px] font-sans rounded-2xl my-5 mx-auto">
                                                 <div className="flex justify-center w-full relative">
-                                                    <div className="flex justify-end items-center left-4 right-4 top-4 absolute">
-                                                        <button className="flex items-center">
-                                                            <svg
-                                                                width={30}
-                                                                className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
-                                                                viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                style={{
-                                                                    cursor: "pointer",
-                                                                }}
-                                                            >
-                                                                <g strokeWidth="0"></g>
-                                                                <g
-                                                                    id="SVGRepo_tracerCarrier"
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                ></g>
-                                                                <g id="SVGRepo_iconCarrier">
-                                                                    <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                                                                </g>
-                                                            </svg>
-                                                        </button>
-                                                    </div>
+                                                    
                                                     <img
                                                         className="rounded-xl bg-black/40 object-cover w-full h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150"
                                                         src={`http://localhost:5000/images/${flat.flatList.images[0]}`}

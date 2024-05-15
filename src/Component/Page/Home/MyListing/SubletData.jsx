@@ -282,29 +282,7 @@ const SubletData = () => {
                                     <div className=" pb-6">
                                         <div className="max-w-[350px] font-sans rounded-2xl space-y-6 my-5 mx-auto ">
                                             <div className="flex justify-center w-full relative">
-                                                <div className="flex justify-end items-center left-4 right-4 top-4 absolute">
-                                                    <button className="flex items-center">
-                                                        <svg
-                                                            width={30}
-                                                            className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
-                                                            viewBox="0 0 24 24"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            style={{
-                                                                cursor: "pointer",
-                                                            }}
-                                                        >
-                                                            <g strokeWidth="0"></g>
-                                                            <g
-                                                                id="SVGRepo_tracerCarrier"
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                            ></g>
-                                                            <g id="SVGRepo_iconCarrier">
-                                                                <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                                                            </g>
-                                                        </svg>
-                                                    </button>
-                                                </div>
+                                               
                                                 <img
                                                     className="rounded-xl bg-black/40 object-cover w-full h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150
                                                     "

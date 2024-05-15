@@ -274,7 +274,7 @@ const RoommateDetails = () => {
                         className="md:w-16 md:h-16 rounded-lg w-28 h-14"
                       />
                     </div>
-                    <div className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
+                    <div className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black mx-5 lg:mx-0">
                       <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                         User Name:{" "}
                         {
@@ -427,7 +427,7 @@ const RoommateDetails = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="border-t-2 border-b-2">
+                  <div className="border-t-2 border-b-2 mx-5 lg:mx-0">
                     <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
                       Personal Information
                     </h1>

@@ -11,7 +11,7 @@ const FindRoommate = () => {
   const [priceSort, setPriceSort] = useState("");
   const [gender, setGender] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [roommatesPerPage] = useState(24);
+  const [roommatesPerPage] = useState(30);
   const { auths } = useContext(AuthContext);
   const user = auths?.user;
   const [dropdownOpenPage, setDropDownPage] = useState(false);
@@ -279,9 +279,9 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
             className="block"
           >
             <div className="bg-white md:px-4 py-5 rounded-lg ">
-              <div className="relative grid h-[15rem] md:h-[20rem] w-full lg:max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
+              <div className="relative border border-gray-150 grid h-[15rem] md:h-[20rem] w-full lg:max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
                 <div
-                  className="absolute inset-0 m-0 h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150 w-full overflow-hidden rounded-none bg-black/40   bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
+                  className="absolute inset-0 m-0 h-[230px] md:h-[290px] lg:h-[319px] border rounded-md border-gray-150 w-full overflow-hidden bg-black/40   bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
                   style={{
                     backgroundImage: `url('http://localhost:5000/images/${roommate?.roomateList?.images[0]}')`,
                   }}

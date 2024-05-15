@@ -90,12 +90,12 @@ const [center, setCenter] = useState([23.8041, 90.4152]);
   return (
     <>
       {/* details hero section  */}
-      <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3">
+      <div className="w-11/12 mx-auto lg:flex mt-3 md:rounded-lg lg:rounded-none gap-3">
         <div className="lg:w-[50%]">
           <img
             src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[0]}`}
             alt=""
-            className=" h-[500px] w-full rounded-l-2xl"
+            className=" h-[500px] w-full rounded-l-2xl border border-gray-150 mb-3"
           />
         </div>
         <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  h-[500px] gap-3">
@@ -103,28 +103,28 @@ const [center, setCenter] = useState([23.8041, 90.4152]);
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[1]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 mb-3"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-tr-2xl">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[2]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 mb-3"
             />
           </div>
           <div className="bg-cover overflow-hidden relative">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[3]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 mb-3"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-br-2xl">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[4]}`}
               alt=""
-              className="w-full h-full "
+              className="w-full h-full border border-gray-150 mb-3"
             />
             <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
               <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 border-black mr-3">

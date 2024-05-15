@@ -144,7 +144,7 @@ const RoommateDetails = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  lg:h-[500px] gap-3">
+        <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  md:h-[500px] gap-3">
           <div className="bg-cover overflow-hidden relative ">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[1]}`}
@@ -471,7 +471,7 @@ const RoommateDetails = () => {
             </div>
             {/* div for right side */}
             <div className="flex flex-col gap-3 px-6">
-              <div className="h-auto p-5 md:w-[416px] max-w-[416px] mt-3 shadow-lg border border-gray-150 rounded-lg">
+              <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                 <div>
                   <div className="flex items-center justify-between">
                     <h2 className="text-3xl font-bold my-5">

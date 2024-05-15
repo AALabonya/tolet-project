@@ -155,7 +155,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
           </Link>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-5">
+        <div className="flex flex-wrap justify-center items-center gap-5 px-4">
           <input
             value={searchValue}
             onChange={handleSearch}
@@ -270,7 +270,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
           </select> */}
       {/* roommate cards  */}
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 lg:px-14 px-6">
         {currentRoommates.map((roommate, index) => (
           <Link
@@ -320,7 +320,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
                   />
                 </div>
               </div>
-              <div className="mt-3 flex-1 text-sm">
+              <div className="mt-3 flex-1 text-sm text-center">
                 <div>
                   <h3 className="text-gray-900 group-hover:underline group-hover:underline-offset-4">
                     Location:{" "}

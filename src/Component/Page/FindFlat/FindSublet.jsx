@@ -97,7 +97,7 @@ const FindSublet = () => {
   
     return (
       <>
-        <div className="lg:px-14 flex justify-center lg:gap-10 px-2">
+        <div className="lg:px-14 flex justify-center lg:gap-10 px-4">
           {/* this is a two button */}
   
           <div className="flex justify-evenly flex-wrap lg:gap-10 gap-5 py-5 lg:px-6">

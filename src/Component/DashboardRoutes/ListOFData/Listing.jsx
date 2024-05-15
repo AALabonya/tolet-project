@@ -281,7 +281,7 @@ const Listing = () => {
                     )
                 )}
                 <button
-                    className="join-item btn btn-outline mr-2"
+                    className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-1 md:mr-2"
                     onClick={() => paginate(currentPage + 1)}
                     disabled={
                         currentPage ===

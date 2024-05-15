@@ -64,15 +64,22 @@ const FlatDetails = () => {
       };
       // console.log("hello", flatData);
 
-      await axios.post(`http://localhost:5000/reportList`, report);
-      message.success("Successfully Added reportList!");
-      setOpenReportModal(false);
-      console.log("Added to wishlist:", report);
-    } catch (error) {
-      console.error("Error adding to reportList:", error);
+    const response =  await axios.post(`http://localhost:5000/reportList`, report);
+    if (response.status === 201) {
+      // console.log("Added to wishlist:", flat);
+      message.success("Successfully Added to Wishlist!");
+    } else if (response.status === 409) {
+      message.error("Wishlist already exists for this user.");
     }
-  };
-
+  } catch (error) {
+    if (error.response && error.response.status === 409) {
+      message.error("Wishlist already exists for this user.");
+    } else {
+      console.error("Error adding to wishlist:", error);
+      message.error("An error occurred while adding to wishlist.");
+    }
+  }
+};
   const [center, setCenter] = useState([23.8041, 90.4152]);
 
   useEffect(() => {
@@ -564,7 +571,7 @@ const FlatDetails = () => {
             </div>
       } */}
           
-          {flatData?.flatList?.description?.location?.lat != 22.9372087 && (
+          {flatData?.flatList?.description?.location?.lat != 23.8041 && (
               <div className="relative h-full max-md:min-h-[450px] mt-16 px-3">
                 {map}
               </div>

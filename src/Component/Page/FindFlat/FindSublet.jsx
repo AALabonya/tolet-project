@@ -77,13 +77,23 @@ const FindSublet = () => {
           flatWishList: flat,
           roommateWishList: "",
         };
-        console.log("hello", flatData);
-  
-        await axios.post(`http://localhost:5000/wishList`, flatData);
-        console.log("Added to wishlist:", flat);
-        message.success("Successfully Added WishList!");
+        // console.log("hello", flatData);
+    
+        const response = await axios.post(`http://localhost:5000/wishList`, flatData);
+        
+        if (response.status === 201) {
+          // console.log("Added to wishlist:", flat);
+          message.success("Successfully Added to Wishlist!");
+        } else if (response.status === 409) {
+          message.error("Wishlist already exists for this user.");
+        }
       } catch (error) {
-        console.error("Error adding to wishlist:", error);
+        if (error.response && error.response.status === 409) {
+          message.error("Wishlist already exists for this user.");
+        } else {
+          console.error("Error adding to wishlist:", error);
+          message.error("An error occurred while adding to wishlist.");
+        }
       }
     };
   

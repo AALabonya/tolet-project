@@ -757,9 +757,12 @@ console.log(maps);
          </div>
 
             {/* map */}
-            <div className=" h-full max-md:min-h-[350px] mt-16 px-3">
+            { wishListData?.flatWishList
+        ?.flatList
+        ?.description?.location
+        ?.lat != 23.8041 &&(<div className=" h-full max-md:min-h-[350px] mt-16 px-3">
                    {maps}
-                 </div>
+                 </div>)}
        </div>
    </div>
       )}

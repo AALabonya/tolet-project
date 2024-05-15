@@ -64,7 +64,25 @@ console.log("flatdataUUUU", flatData);
     setPriceSort(sortOrder);
   };
 
-  // add To flat Wishlist-----------------------
+  // // add To flat Wishlist-----------------------
+  // const addToWishlist = async (flat) => {
+  //   console.log(flat);
+  //   try {
+  //     const flatData = {
+  //       userEmail: user?.email,
+  //       userId: user?._id,
+  //       flatWishList: flat,
+  //       roommateWishList: "",
+  //     };
+  //     console.log("hello", flatData);
+      
+  //     await axios.post(`http://localhost:5000/wishList`, flatData);
+  //     console.log("Added to wishlist:", flat);
+  //     message.success("Successfully Added WishList!");
+  //   } catch (error) {
+  //     console.error("Error adding to wishlist:", error);
+  //   }
+  // };
   const addToWishlist = async (flat) => {
     console.log(flat);
     try {
@@ -74,16 +92,25 @@ console.log("flatdataUUUU", flatData);
         flatWishList: flat,
         roommateWishList: "",
       };
-      console.log("hello", flatData);
+      // console.log("hello", flatData);
+  
+      const response = await axios.post(`http://localhost:5000/wishList`, flatData);
       
-      await axios.post(`http://localhost:5000/wishList`, flatData);
-      console.log("Added to wishlist:", flat);
-      message.success("Successfully Added WishList!");
+      if (response.status === 201) {
+        // console.log("Added to wishlist:", flat);
+        message.success("Successfully Added to Wishlist!");
+      } else if (response.status === 409) {
+        message.error("Wishlist already exists for this user.");
+      }
     } catch (error) {
-      console.error("Error adding to wishlist:", error);
+      if (error.response && error.response.status === 409) {
+        message.error("Wishlist already exists for this user.");
+      } else {
+        console.error("Error adding to wishlist:", error);
+        message.error("An error occurred while adding to wishlist.");
+      }
     }
   };
-
   const dropDownIcon = (e) => {
     e.stopPropagation();
     setDropDownPage(!dropdownOpenPage);

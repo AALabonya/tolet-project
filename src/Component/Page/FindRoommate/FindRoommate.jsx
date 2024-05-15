@@ -104,14 +104,22 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
       };
      
       // console.log(roomMates);
-      await axios.post(`http://localhost:5000/wishlist`, roomMates);
-      console.log("Added to wishlist:", roommate);
-      message.success("Successfully Added WishList!");
+      const response = await axios.post(`http://localhost:5000/wishlist`, roomMates);
+      if (response.status === 201) {
+        // console.log("Added to wishlist:", flat);
+        message.success("Successfully Added to Wishlist!");
+      } else if (response.status === 409) {
+        message.error("Wishlist already exists for this user.");
+      }
     } catch (error) {
-      console.error("Error adding to wishlist:", error);
+      if (error.response && error.response.status === 409) {
+        message.error("Wishlist already exists for this user.");
+      } else {
+        console.error("Error adding to wishlist:", error);
+        message.error("An error occurred while adding to wishlist.");
+      }
     }
   };
-
   return (
     <>
       <div className="px-2 lg:px-12 flex flex-wrap justify-center lg:gap-10 gap-5 py-5">

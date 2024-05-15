@@ -41,13 +41,23 @@ const RoommateDetails = () => {
       };
 
       // console.log(roomMates);
-      await axios.post(`http://localhost:5000/wishlist`, roomMates);
-      // console.log("Added to wishlist:", roommate);
-      message.success("Successfully Added WishList!");
-    } catch (error) {
-      console.error("Error adding to wishlist:", error);
+     const response = await axios.post(`http://localhost:5000/wishlist`, roomMates);
+     if (response.status === 201) {
+      // console.log("Added to wishlist:", flat);
+      message.success("Successfully Added to Wishlist!");
+    } else if (response.status === 409) {
+      message.error("Wishlist already exists for this user.");
     }
-  };
+  } catch (error) {
+    if (error.response && error.response.status === 409) {
+      message.error("Wishlist already exists for this user.");
+    } else {
+      console.error("Error adding to wishlist:", error);
+      message.error("An error occurred while adding to wishlist.");
+    }
+  }
+};
+
   // add To reportList-----------------------
   const addToReportList = async (roommateDetails) => {
     console.log("this", roommateDetails);
@@ -629,9 +639,11 @@ const RoommateDetails = () => {
           </div>
 
           {/* map */}
-          <div className="relative h-full max-md:min-h-[350px] mt-16 px-3">
-            {map}
-          </div>
+          {roommateDetails?.roomateList?.description?.location?.lat != 23.8041 && (
+              <div className="relative h-full max-md:min-h-[450px] mt-16 px-3">
+                {map}
+              </div>
+            )}
         </div>
       </div>
     </>

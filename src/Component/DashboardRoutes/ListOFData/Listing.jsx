@@ -270,7 +270,7 @@ const Listing = () => {
                         <button
                             key={i}
                             onClick={() => paginate(i + 1)}
-                            className={`join-item btn btn-outline mr-2 ${
+                            className={`join-item px-3 md:px-4 md:text-base btn rounded-md btn-outline mr-1 md:mr-2 ${
                                 currentPage === i + 1
                                     ? "bg-green-400 text-white"
                                     : ""

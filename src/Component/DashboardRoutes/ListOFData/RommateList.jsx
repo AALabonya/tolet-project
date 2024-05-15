@@ -277,7 +277,7 @@ const RommateList = () => {
                     onClick={() => paginate(currentPage - 1)}
                     disabled={currentPage === 1}
                 >
-                    &larr; Previous page
+                    &larr; Previous
                 </button>
                 {Array.from(
                     { length: Math.ceil(roomMate.length / roommatesPerPage) },
@@ -296,7 +296,7 @@ const RommateList = () => {
                     )
                 )}
                 <button
-                    className="join-item btn btn-outline mr-2"
+                    className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-1 md:mr-2"
                     onClick={() => paginate(currentPage + 1)}
                     disabled={
                         currentPage ===

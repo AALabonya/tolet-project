@@ -10,7 +10,7 @@ const MenuDropDown = () => {
   const { auths, logOut } = useContext(AuthContext);
   const user = auths?.user;
   // console.log(user);
-  const adminEmail = "admin@admin.com"; 
+  const adminEmail = "admin@admin.com";
   const isAdmin = user && user.email === adminEmail;
 
   const [collapse, setCollapse] = useState(false);
@@ -19,7 +19,7 @@ const MenuDropDown = () => {
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div className="hidden md:block">
-        {isAdmin && (
+          {isAdmin && (
             <Link to="/dashboard">
               <button className="disabled:cursor-not-allowed cursor-pointer bg-green-400 border border-black py-3 px-4 text-sm font-semibold rounded-full  transition mr-3">
                 Dashboard
@@ -45,45 +45,39 @@ const MenuDropDown = () => {
                  gap-3 rounded-full cursor-pointer hover:shadow-md transition"
         >
           <AiOutlineMenu />
-          <div className="hidden md:block">
-            {/* avatar  */}
-            <img
-              className="rounded-full"
-              src={
-                auths.status === "manual"
-                  ? `http://localhost:5000/image/${user?.user_image}`
-                  : auths.status === "firebase"
-                  ? user?.user_image
-                  : avatarImg
-              }
-              height="30"
-              width="30"
-            />
+          <div className="avatar hidden md:block">
+            <div className="w-8 rounded-full ">
+              <img
+                alt="profile"
+                src={user?.user_image}
+              />
+            </div>
           </div>
+          <div className="">{/* avatar  */}</div>
         </div>
       </div>
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[90vw] md:w-[15vw] xl:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm z-10">
           <div className="flex flex-col cursor-pointer">
-        <div className="flex flex-col px-2">
-        {isAdmin && ( 
-            <Link to="/dashboard">
-              <button className="block mt-5 lg:mt-0 px-11 py-1 md:hidden text-[10px] disabled:cursor-not-allowed ms-2 cursor-pointer bg-green-400 border border-black lg:py-3 lg:px-4 lg:text-sm font-semibold rounded-full  transition">
-                Dashboard
-              </button>
-            </Link>
-          )}
-        <Link to="/createFlatList">
-          <button className="block mt-5 lg:mt-0 px-7 py-1 md:hidden text-[10px] disabled:cursor-not-allowed ms-2 cursor-pointer bg-green-400 border border-black lg:py-3 lg:px-4 lg:text-sm font-semibold rounded-full  transition">
-            Create new FlatList
-          </button>
-        </Link>
-        <Link to="/createRoommateList">
-          <button className="block mt-5 lg:mt-0 px-3 py-1 md:hidden disabled:cursor-not-allowed text-[10px] ms-2 cursor-pointer bg-green-400 border border-black lg:py-3 lg:px-4 lg:text-sm font-semibold rounded-full  transition">
-            Create new RoommateList
-          </button>
-        </Link>
-        </div>
+            <div className="flex flex-col px-2">
+              {isAdmin && (
+                <Link to="/dashboard">
+                  <button className="block mt-5 lg:mt-0 px-11 py-1 md:hidden text-[10px] disabled:cursor-not-allowed ms-2 cursor-pointer bg-green-400 border border-black lg:py-3 lg:px-4 lg:text-sm font-semibold rounded-full  transition">
+                    Dashboard
+                  </button>
+                </Link>
+              )}
+              <Link to="/createFlatList">
+                <button className="block mt-5 lg:mt-0 px-7 py-1 md:hidden text-[10px] disabled:cursor-not-allowed ms-2 cursor-pointer bg-green-400 border border-black lg:py-3 lg:px-4 lg:text-sm font-semibold rounded-full  transition">
+                  Create new FlatList
+                </button>
+              </Link>
+              <Link to="/createRoommateList">
+                <button className="block mt-5 lg:mt-0 px-3 py-1 md:hidden disabled:cursor-not-allowed text-[10px] ms-2 cursor-pointer bg-green-400 border border-black lg:py-3 lg:px-4 lg:text-sm font-semibold rounded-full  transition">
+                  Create new RoommateList
+                </button>
+              </Link>
+            </div>
             <Link
               to="/"
               className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
@@ -145,14 +139,9 @@ const MenuDropDown = () => {
                 </Link>
               </>
             )}
-
-           
           </div>
-        
         </div>
-         
-      )
-      }
+      )}
     </div>
   );
 };

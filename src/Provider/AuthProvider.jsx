@@ -33,6 +33,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, FBprovider).finally(() => setLoading(false));
   };
+  
   const verifyToken = async () => {
     try {
       const token = localStorage.getItem("access-token");

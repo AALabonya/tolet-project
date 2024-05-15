@@ -69,7 +69,12 @@ export default function CreateFlatListForm() {
 
   const navigate = useNavigate();
   // console.log("user",auths?.user?.email);
-
+ 
+  //addressChanged Handler
+const closeHandleModal=()=>{
+ setOpenModal(false)
+ setShowAddress(false)
+}
 
 
   const handleNext = () => {
@@ -482,14 +487,14 @@ export default function CreateFlatListForm() {
                                 onChange={(e) => setAddress(e.target.value)}
                               />
                             )}
-                            <div
+                            {/* <div
                               onClick={() => setShowAddress(!showAddress)}
                               className="cursor-pointer"
                             >
                               {showAddress
                                 ? "Add Manually Address"
                                 : "Default Address"}
-                            </div>
+                            </div> */}
                           </Grid>
                         }
                         <Grid item sm={12} md={12}>
@@ -696,11 +701,7 @@ export default function CreateFlatListForm() {
                     Back
                   </Button>
                   <Box sx={{ flex: "1 1 auto" }} />
-                  {isStepOptional(activeStep) && (
-                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                      Skip
-                    </Button>
-                  )}
+                 
                   {activeStep === 0 &&
                     formData.type &&
                     formData.date &&
@@ -850,20 +851,7 @@ export default function CreateFlatListForm() {
                                 onChange={handleChange}
                               />
                             </Grid>
-                            {/* <Grid item sm={12} md={6}>
-                              <InputLabel>Address</InputLabel>
-                              <TextField
-                                required
-                                fullWidth
-                                value={address}
-                                id="name"
-                                name="address"
-                                autoComplete="address"
-                                autoFocus
-                                placeholder="Address"
-                                onChange={handleChange}
-                              />
-                            </Grid> */}
+                         
                             <Grid item sm={12} md={6}>
                               <InputLabel>City</InputLabel>
                               <FormControl
@@ -920,14 +908,7 @@ export default function CreateFlatListForm() {
                                 onChange={(e) => setAddress(e.target.value)}
                               />
                             )}
-                            <div
-                              onClick={() => setShowAddress(!showAddress)}
-                              className="cursor-pointer"
-                            >
-                              {showAddress
-                                ? "Add Manually Address"
-                                : "Default Address"}
-                            </div>
+
                           </Grid>
                         }
                             <Grid item sm={12} md={12}>
@@ -1149,13 +1130,6 @@ export default function CreateFlatListForm() {
                       {activeStep === steps.length - 1 ? "Finish" : "Next"}
                     </Button>
                   )}
-                        {/* <Button
-                          variant="contained"
-                          onClick={handleNext}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          {index === steps.length - 1 ? "Finish" : "Continue"}
-                        </Button> */}
                        
                       </div>
                     </Box>
@@ -1192,7 +1166,7 @@ export default function CreateFlatListForm() {
             }`}
           >
            <div className="flex justify-end mb-3">
-           <button onClick={() => setOpenModal(false)} className=" rounded-md border border-rose-600 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white">
+           <button onClick={closeHandleModal} className=" rounded-md border border-rose-600 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white">
                 X
               </button>
            </div>

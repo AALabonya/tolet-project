@@ -1,8 +1,9 @@
 import { message } from "antd";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useLoaderData, useParams } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const RoommateDetails = () => {
   const mapRef = useRef(null);
@@ -16,6 +17,8 @@ const RoommateDetails = () => {
 
   const { data: roommateDetails } = useLoaderData();
   console.log(roommateDetails);
+  const { auths } = useContext(AuthContext);
+  const user = auths?.user;
   const handleTextareaChange = (e) => {
     setReportMessage(e.target.value);
   };
@@ -25,7 +28,26 @@ const RoommateDetails = () => {
   }, []);
 
   // console.log("roommateDetails",roommateDetails);
+  // add To Roommate Wishlist ---------------------------
 
+  const addToRoommateWishlist = async (roommateDetails) => {
+    console.log(roommateDetails);
+    try {
+      const roomMates = {
+        userEmail: user?.email,
+        userId: user?._id,
+        roommateWishList: roommateDetails,
+        flatWishList: "",
+      };
+
+      // console.log(roomMates);
+      await axios.post(`http://localhost:5000/wishlist`, roomMates);
+      // console.log("Added to wishlist:", roommate);
+      message.success("Successfully Added WishList!");
+    } catch (error) {
+      console.error("Error adding to wishlist:", error);
+    }
+  };
   // add To reportList-----------------------
   const addToReportList = async (roommateDetails) => {
     console.log("this", roommateDetails);
@@ -92,7 +114,7 @@ const RoommateDetails = () => {
           <img
             src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[0]}`}
             alt=""
-            className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[300px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
+            className="lg:h-[500px] md:h-[400px] h-[250px]  max-h-screen w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
           <div className="absolute left-0  bottom-[5%] w-full flex justify-end text-center md:hidden ">
             <div className=" bg-white text-black rounded-lg shadow-lg border-2 mr-3">
@@ -118,6 +140,14 @@ const RoommateDetails = () => {
                         : "scale-0 opacity-0 duration-150"
                     }`}
                   >
+                    <div className="flex justify-end">
+                      <button
+                        onClick={() => setOpenModal(false)}
+                        className="rounded-sm border border-red-600 px-6 py-[6px] text-red-600 duration-150 hover:bg-red-600 hover:text-white"
+                      >
+                        X
+                      </button>
+                    </div>
                     <h1 className="mb-2 text-2xl font-semibold">
                       All Room Images!
                     </h1>
@@ -130,14 +160,6 @@ const RoommateDetails = () => {
                         />
                       </div>
                     ))}
-                    <div className="flex justify-end">
-                      <button
-                        onClick={() => setOpenModal(false)}
-                        className="rounded-sm border border-red-600 px-6 py-[6px] text-red-600 duration-150 hover:bg-red-600 hover:text-white"
-                      >
-                        X
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -196,18 +218,6 @@ const RoommateDetails = () => {
                           : "scale-0 opacity-0 duration-150"
                       }`}
                     >
-                      <h1 className="mb-2 text-2xl font-semibold">
-                        All Room Images!
-                      </h1>
-                      {allRoommateImages.map((image, index) => (
-                        <div key={index} className="flex-1 gap-2 ">
-                          <img
-                            src={`http://localhost:5000/images/${image}`}
-                            alt=""
-                            className="h-[500px] w-full mb-4"
-                          />
-                        </div>
-                      ))}
                       <div className="flex justify-end">
                         <button
                           onClick={() => setOpenModal(false)}
@@ -216,6 +226,18 @@ const RoommateDetails = () => {
                           X
                         </button>
                       </div>
+                      <h1 className="mb-2 text-2xl font-semibold">
+                        All Room Images!
+                      </h1>
+                      {allRoommateImages.map((image, index) => (
+                        <div key={index} className="flex-1 gap-2 ">
+                          <img
+                            src={`http://localhost:5000/images/${image}`}
+                            alt=""
+                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -230,7 +252,7 @@ const RoommateDetails = () => {
         {/* details sections starts */}
         <div className="mx-auto lg:mt-16 md:px-14 mt-5">
           <div className="flex justify-center md:gap-24">
-            <div className="">
+            <div className=" md:px-0 md:w-3/4 ">
               <div className=" px-5 md:px-0 ">
                 <div className="mb-16 flex-1 justify-center">
                   <div className="mb-5 flex justify-start gap-10">
@@ -266,29 +288,36 @@ const RoommateDetails = () => {
                   </div>
                   {/* div for right side */}
                   <div className="flex flex-col gap-3 mt-4">
-                  <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+                    <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                       <div>
                         <div className="flex items-center justify-between">
                           <h2 className="lg:text-3xl md:text-base text-sm font-bold md:my-5">
                             ${roommateDetails?.roomateList?.description?.rent}
                           </h2>
-                          <svg
-                            width={30}
-                            className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            style={{ cursor: "pointer" }}
+                          <button
+                            className="flex justify-end px-5 py-6"
+                            onClick={() =>
+                              addToRoommateWishlist(roommateDetails)
+                            }
                           >
-                            <g strokeWidth="0"></g>
-                            <g
-                              id="SVGRepo_tracerCarrier"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            ></g>
-                            <g id="SVGRepo_iconCarrier">
-                              <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                            </g>
-                          </svg>
+                            <svg
+                              width={30}
+                              className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                              style={{ cursor: "pointer" }}
+                            >
+                              <g strokeWidth="0"></g>
+                              <g
+                                id="SVGRepo_tracerCarrier"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              ></g>
+                              <g id="SVGRepo_iconCarrier">
+                                <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
+                              </g>
+                            </svg>
+                          </button>
                         </div>
                         <button
                           className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -315,7 +344,7 @@ const RoommateDetails = () => {
                         onClick={() => setOpenReportModal(true)}
                         className="rounded-md  px-5 py-[6px]  text-black  block md:hidden text-sm md:text-base"
                       >
-                       <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
+                        <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -471,29 +500,34 @@ const RoommateDetails = () => {
             </div>
             {/* div for right side */}
             <div className="flex flex-col gap-3">
-            <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+              <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                 <div>
-                <div className="flex items-center justify-between">
-                  <h2 className="lg:text-3xl md:text-base font-bold md:my-5">
+                  <div className="flex items-center justify-between">
+                    <h2 className="lg:text-3xl md:text-base font-bold md:my-5">
                       ${roommateDetails?.roomateList?.description?.rent}
                     </h2>
-                    <svg
-                      width={30}
-                      className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ cursor: "pointer" }}
+                    <button
+                      className="flex justify-end px-5 py-6"
+                      onClick={() => addToRoommateWishlist(roommateDetails)}
                     >
-                      <g strokeWidth="0"></g>
-                      <g
-                        id="SVGRepo_tracerCarrier"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></g>
-                      <g id="SVGRepo_iconCarrier">
-                        <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                      </g>
-                    </svg>
+                      <svg
+                        width={30}
+                        className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ cursor: "pointer" }}
+                      >
+                        <g strokeWidth="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
+                        </g>
+                      </svg>
+                    </button>
                   </div>
                   <button
                     className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -519,7 +553,7 @@ const RoommateDetails = () => {
                   onClick={() => setOpenReportModal(true)}
                   className="rounded-md  text-black"
                 >
-                   <div className="md:w-[360px] lg:w-[400px] w-96 max-w-[380px] h-fit p-5 underline flex justify-center items-center gap-5">
+                  <div className="md:w-[360px] lg:w-[400px] w-96 max-w-[380px] h-fit p-5 underline flex justify-center items-center gap-5">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="1em"

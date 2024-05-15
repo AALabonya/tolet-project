@@ -271,9 +271,9 @@ const RommateList = () => {
             </div>
             {/* for pagination */}
 
-            <div className=" flex flex-wrap justify-center mb-10 mt-24">
+            <div className="  flex flex-wrap justify-center mb-10 mt-24 gap-2 md:gap-5">
                 <button
-                    className="join-item btn btn-outline mr-2"
+                    className="join-item px-2 py-1 md:text-base text-sm rounded-md btn btn-outline mr-1 md:mr-2"
                     onClick={() => paginate(currentPage - 1)}
                     disabled={currentPage === 1}
                 >
@@ -284,7 +284,7 @@ const RommateList = () => {
                     (_, i) => (
                         <button
                             key={i}
-                            className={`join-item btn btn-outline mr-2 ${
+                            className={`join-item px-3 md:px-4 md:text-base btn rounded-md btn-outline mr-1 md:mr-2 ${
                                 currentPage === i + 1
                                     ? "bg-green-400 text-white"
                                     : ""

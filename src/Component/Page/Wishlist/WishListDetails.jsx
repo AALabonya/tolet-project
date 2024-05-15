@@ -323,23 +323,6 @@ console.log(maps);
                  <h2 className="lg:text-3xl font-bold md:my-5">
                      ${details.roommateWishList?.roomateList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -448,23 +431,7 @@ console.log(maps);
                    <h2 className="text-3xl font-bold my-5">
                      ${details.roommateWishList?.roomateList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
+                 
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -643,7 +610,7 @@ console.log(maps);
   {/* details sections starts */}
   <div className="mx-auto lg:mt-16 md:px-9 md:mt-7 mt-4">
          <div className="flex justify-around  md:gap-24">
-           <div className=" md:px-0  ">
+           <div className=" md:px-0 md:w-3/4 ">
              <div className=" px-5 md:px-0 ">
                <div className="mb-16 flex-1 justify-center">
                  <div className="mb-5 flex justify-start gap-10">
@@ -682,23 +649,7 @@ console.log(maps);
                    <h2 className="lg:text-3xl font-bold md:my-5">
                      ${details?.flatWishList?.flatList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
+            
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -780,23 +731,7 @@ console.log(maps);
                    <h2 className="text-3xl font-bold my-5">
                      ${details?.flatWishList?.flatList?.description?.rent}
                    </h2>
-                   <svg
-                     width={30}
-                     className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black "
-                     viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg"
-                     style={{ cursor: "pointer" }}
-                   >
-                     <g strokeWidth="0"></g>
-                     <g
-                       id="SVGRepo_tracerCarrier"
-                       strokeLinecap="round"
-                       strokeLinejoin="round"
-                     ></g>
-                     <g id="SVGRepo_iconCarrier">
-                       <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                     </g>
-                   </svg>
+                  
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  

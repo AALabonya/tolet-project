@@ -9,6 +9,7 @@ const WishListDetails = () => {
   const roomRef = useRef(null);
   const { data: wishListData } = useLoaderData();
   const [center, setCenter] = useState([23.8041, 90.4152]);
+  const [roomCenter, setRoomCenter] = useState([23.8041, 90.4152]);
     const [openModal, setOpenModal] = useState(false);
     const [flatImageOpenModal, setFlatImageOpenModal]= useState(false);
     const [allRoommateImages, setAllRoommateImages] = useState([]);
@@ -48,21 +49,21 @@ const WishListDetails = () => {
 useEffect(() => {
   const lat = parseFloat(wishListData?.roommateWishList?.roomateList?.description?.location?.lat);
   const lon = parseFloat(wishListData?.roommateWishList?.roomateList?.description?.location?.lon);
-console.log("ttttt",lat, lon);
+// console.log("ttttt",lat, lon);
   if (!isNaN(lat) && !isNaN(lon)) {
-    setCenter([lat, lon]);
+    setRoomCenter([lat, lon]);
   }
 }, [wishListData]);
 
     useEffect(() => {
         if (roomRef.current) {
-          roomRef.current.setView(center, 13);
+          roomRef.current.setView(roomCenter, 13);
         }
-    }, [center]);
+    }, [roomCenter]);
 
     const roomMap = (
         <MapContainer
-            center={center}
+            center={roomCenter}
             zoom={30}
             style={{
                 height: "250px",
@@ -74,9 +75,9 @@ console.log("ttttt",lat, lon);
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={center}>
+            <Marker position={roomCenter}>
                 <Popup>
-             {wishListData?.roommateWishList?.roomateList?.description?.location?.address}
+                {wishListData?.roommateWishList?.roomateList?.description?.location?.address}
                 </Popup>
             </Marker>
         </MapContainer>
@@ -134,12 +135,62 @@ console.log(maps);
         <div>
 
         <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3">
-        <div className="lg:w-[50%]">
+        <div className="lg:w-[50%] relative">
           <img
             src={`http://localhost:5000/images/${details.roommateWishList?.roomateList?.images[0]}`}
             alt=""
             className=" h-[500px] w-full rounded-l-2xl"
           />
+           <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden">
+              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 mr-3">
+                <div>
+                  <button
+                    onClick={() => setOpenModal(true)}
+                    className="rounded-sm  px-5 py-[6px] text-black"
+                    id="_modal_NavigateUI"
+                  >
+                    Show All Photo
+                  </button>
+                  <div
+                    onClick={() => setOpenModal(false)}
+                    className={`fixed z-[100] flex items-center justify-center ${
+                      openModal ? "visible opacity-100" : "invisible opacity-0"
+                    } inset-0 bg-black/20 backdrop-blur-sm duration-100 `}
+                  >
+                    <div
+                      onClick={(e_) => e_.stopPropagation()}
+                      className={`text- absolute max-w-xl rounded-sm h-96 overflow-y-auto bg-white p-6 drop-shadow-lg  ${
+                        openModal
+                          ? "scale-1 opacity-1 duration-300"
+                          : "scale-0 opacity-0 duration-150"
+                      }`}
+                    >
+                      <div className="flex justify-end">
+                        <button
+                          onClick={() => setOpenModal(false)}
+                          className="rounded-sm border border-red-600 px-6 py-[6px] text-red-600 duration-150 hover:bg-red-600 hover:text-white"
+                        >
+                          X
+                        </button>
+                      </div>
+                      <h1 className="mb-2 text-2xl font-semibold">
+                        All Room Images!
+                      </h1>
+                      {allRoommateImages.map((image, index) => (
+                        <div key={index} className="flex-1 gap-2 ">
+                          <img
+                            src={`http://localhost:5000/images/${image}`}
+                            alt=""
+                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                          />
+                        </div>
+                      ))}
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
         <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  h-[500px] gap-3">
           <div className="bg-cover overflow-hidden relative ">
@@ -170,7 +221,7 @@ console.log(maps);
               className="w-full h-full "
             />
             <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
-              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 border-black mr-3">
+              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 mr-3">
                 <div>
                   <button
                     onClick={() => setOpenModal(true)}
@@ -193,18 +244,6 @@ console.log(maps);
                           : "scale-0 opacity-0 duration-150"
                       }`}
                     >
-                      <h1 className="mb-2 text-2xl font-semibold">
-                        All Room Images!
-                      </h1>
-                      {allRoommateImages.map((image, index) => (
-                        <div key={index} className="flex-1 gap-2 ">
-                          <img
-                            src={`http://localhost:5000/images/${image}`}
-                            alt=""
-                            className="h-[500px] w-full mb-4"
-                          />
-                        </div>
-                      ))}
                       <div className="flex justify-end">
                         <button
                           onClick={() => setOpenModal(false)}
@@ -213,6 +252,19 @@ console.log(maps);
                           X
                         </button>
                       </div>
+                      <h1 className="mb-2 text-2xl font-semibold">
+                        All Room Images!
+                      </h1>
+                      {allRoommateImages.map((image, index) => (
+                        <div key={index} className="flex-1 gap-2 ">
+                          <img
+                            src={`http://localhost:5000/images/${image}`}
+                            alt=""
+                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                          />
+                        </div>
+                      ))}
+                      
                     </div>
                   </div>
                 </div>
@@ -339,11 +391,7 @@ console.log(maps);
                    </ul>
                  </div>
 
-                 {/* map */}
-                 <div className="relative h-full max-md:min-h-[350px] mt-16">
-                   
-                   {roomMap}
-                 </div>
+                
                </div>
              </div>
            </div>
@@ -395,7 +443,13 @@ console.log(maps);
             
            </div>
          </div>
+          {/* map */}
+          <div className="relative h-full max-md:min-h-[350px] mt-16 px-3">
+ 
+                   {roomMap}
+                 </div>
        </div>
+
    </div>
       )}
 
@@ -434,18 +488,6 @@ console.log(maps);
                           : "scale-0 opacity-0 duration-150"
                       }`}
                     >
-                      <h1 className="mb-2 text-2xl font-semibold">
-                        All Room Images!
-                      </h1>
-                      {allFlatImages.map((image, index) => (
-                        <div key={index} className="flex-1 gap-2 ">
-                          <img
-                            src={`http://localhost:5000/images/${image}`}
-                            alt=""
-                            className="h-[500px] w-full mb-4"
-                          />
-                        </div>
-                      ))}
                       <div className="flex justify-end">
                         <button
                           onClick={() => setFlatImageOpenModal(false)}
@@ -454,6 +496,19 @@ console.log(maps);
                           X
                         </button>
                       </div>
+                      <h1 className="mb-2 text-2xl font-semibold">
+                        All Room Images!
+                      </h1>
+                      {allFlatImages.map((image, index) => (
+                        <div key={index} className="flex-1 gap-2 ">
+                          <img
+                            src={`http://localhost:5000/images/${image}`}
+                            alt=""
+                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                          />
+                        </div>
+                      ))}
+                      
                     </div>
                   </div>
                 </div>
@@ -541,22 +596,14 @@ console.log(maps);
         </div>
       </div>
   {/* details sections starts */}
-  <div className="mx-auto lg:mt-16 md:px-12">
-         <div className="flex flex-col md:flex-row gap-6">
-           <div className="main_details px-5 md:px-0 md:w-3/4">
-             <div className=" px-5 md:px-0 md:w-3/4">
-               <div className="mb-16">
+  <div className="mx-auto lg:mt-16 md:px-9 md:mt-7 mt-4">
+         <div className="flex justify-around  md:gap-24">
+           <div className=" md:px-0  ">
+             <div className=" px-5 md:px-0 ">
+               <div className="mb-16 flex-1 justify-center">
                  <div className="mb-5 flex justify-start gap-10">
                    <div>
-                     {" "}
-                     <img
-                       src="https://i.postimg.cc/6prP9jW9/pexels-pixabay-271795.jpg"
-                       alt=""
-                       className="w-16 h-16 rounded-lg"
-                     />
-                   </div>
-                   <div>
-                     <h2 className="lg:text-xl font-medium text-black">
+                     <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        User Name:{" "}
                        {
                          details?.flatWishList?.flatList?.contact_person
@@ -564,11 +611,11 @@ console.log(maps);
                        }{" "}
                        {details?.flatWishList?.flatList?.contact_person?.lastName}
                      </h2>
-                     <h2 className="lg:text-xl font-medium text-black">
+                     <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        Home type:{" "}
                        {details?.flatWishList?.flatList?.description?.type}
                      </h2>
-                     <p className="text-black  font-medium inline-block md:text-lg mt-1">
+                     <p className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                        Location:{" "}
                        {
                          details?.flatWishList?.flatList?.description?.location
@@ -583,8 +630,8 @@ console.log(maps);
                    </div>
                  </div>
                   {/* div for right side */}
-           <div className="flex flex-col gap-3 md:px-6 mt-4">
-             <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+           <div className="flex flex-col gap-3 md:px-6 mt-4 mb-5">
+             <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[470px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                <div>
                  <div className="flex items-center justify-between">
                    <h2 className="lg:text-3xl font-bold md:my-5">
@@ -632,7 +679,7 @@ console.log(maps);
                    <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
                      Personal Information
                    </h1>
-                   <ul className="mb-8 lg:text-lg  text-black">
+                   <ul className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                      <li>
                        - Name :{" "}
                        {
@@ -662,13 +709,13 @@ console.log(maps);
                        }
                      </li>
                    </ul>
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
+                   <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
                      Match Preferences
                    </h1>
-                   <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
+                   <h1 className="mt-8 lg:text-3xl  mb-[12px] text-sm md:text-base capitalize  font-medium text-black">
                      Home Details
                    </h1>
-                   <ul className="mb-8 lg:text-xl  text-black">
+                   <ul className="mb-8 lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                      <li>
                        - Bedroom Type :{" "}
                        {details?.flatWishList?.flatList?.description?.type}
@@ -681,8 +728,8 @@ console.log(maps);
              </div>
            </div>
            {/* div for right side */}
-           <div className="flex flex-col gap-3 px-6">
-             <div className="h-auto p-5 md:w-[416px] max-w-[416px] mt-3 shadow-lg border border-gray-150 rounded-lg">
+           <div className="flex flex-col gap-3">
+             <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                <div>
                  <div className="flex items-center justify-between">
                    <h2 className="text-3xl font-bold my-5">
@@ -730,7 +777,7 @@ console.log(maps);
          </div>
 
             {/* map */}
-            <div className=" h-full max-md:min-h-[350px] mt-16">
+            <div className=" h-full max-md:min-h-[350px] mt-16 px-3">
                    {maps}
                  </div>
        </div>

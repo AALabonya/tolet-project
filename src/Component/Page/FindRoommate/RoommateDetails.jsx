@@ -126,7 +126,7 @@ const RoommateDetails = () => {
                         <img
                           src={`http://localhost:5000/images/${image}`}
                           alt=""
-                          className="h-[500px] w-full mb-4"
+                          className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
                         />
                       </div>
                     ))}

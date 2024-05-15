@@ -270,7 +270,7 @@ const fetchData = async () => {
   
         <div className=" flex flex-wrap justify-center mb-10 mt-24 gap-2 md:gap-5">
           <button
-            className="join-item px-2 py-1 md:text-base text-sm rounded-md btn btn-outline mr-2"
+            className="join-item px-2 py-1 md:text-base text-sm rounded-md btn btn-outline mr-1 md:mr-2"
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
           >

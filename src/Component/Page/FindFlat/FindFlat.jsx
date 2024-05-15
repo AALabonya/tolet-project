@@ -275,11 +275,11 @@ console.log("flatdataUUUU", flatData);
 
       <div className=" flex flex-wrap justify-center mb-10 mt-24 gap-5">
         <button
-          className="join-item btn btn-outline mr-2"
+         className="join-item px-2 py-1 md:text-base text-sm rounded-md btn btn-outline mr-2"
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          &larr; Previous page
+          &larr; Previous
         </button>
         {Array.from(
           { length: Math.ceil(flatData.length / flatsPerPage) },
@@ -287,7 +287,7 @@ console.log("flatdataUUUU", flatData);
             <button
               key={i}
               onClick={() => paginate(i + 1)}
-              className={`join-item btn btn-outline mr-2 ${
+              className={`join-item px-3 md:px-4 md:text-base btn rounded-md btn-outline mr-2 ${
                 currentPage === i + 1 ? "bg-green-400 text-white" : ""
               }`}
             >
@@ -296,7 +296,7 @@ console.log("flatdataUUUU", flatData);
           )
         )}
         <button
-          className="join-item btn btn-outline mr-2"
+           className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-2"
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === Math.ceil(flatData.length / flatsPerPage)}
         >

@@ -11,7 +11,7 @@ const Home = () => {
     const [searchValue, setSearchValue] = useState("");
     const [priceSort, setPriceSort] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const [flatsPerPage] = useState(24);
+    const [flatsPerPage] = useState(30);
     const { auths } = useContext(AuthContext);
     const user = auths?.user;
     const [dropdownOpenPage, setDropDownPage] = useState(false);

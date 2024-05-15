@@ -278,8 +278,8 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
             to={`/roommateDetails/${roommate._id}`}
             className="block"
           >
-            <div className="bg-white px-4 py-5 rounded-lg ">
-              <div className="relative grid h-[20rem] w-full max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
+            <div className="bg-white md:px-4 py-5 rounded-lg ">
+              <div className="relative grid h-[15rem] md:h-[20rem] w-full max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
                 <div
                   className="absolute inset-0 m-0 h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150 w-full overflow-hidden rounded-none bg-black/40   bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
                   style={{
@@ -311,7 +311,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
                     </button>
                   </div>
                 </div>
-                <div className="relative lg:top-1 -top-24 md:-top-10 p-6 px-6 lg:py-6 md:px-5">
+                <div className="relative lg:top-1 -top-5 md:-top-10 p-6 px-6 lg:py-6 md:px-5">
                   <img
                     alt="user"
                     src={`http://localhost:5000/images/${roommate?.roomateList?.contact_person

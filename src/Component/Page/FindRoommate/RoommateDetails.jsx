@@ -228,22 +228,22 @@ const RoommateDetails = () => {
       {/* card details information  */}
       <div>
         {/* details sections starts */}
-        <div className="mx-auto lg:mt-16 md:px-16 mt-5">
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="main_details px-5 md:px-0 md:w-3/4">
-              <div className=" px-5 md:px-0 md:w-3/4">
-                <div className="mb-16">
+        <div className="mx-auto lg:mt-16 md:px-14 mt-5">
+          <div className="flex justify-center md:gap-24">
+            <div className="">
+              <div className=" px-5 md:px-0 ">
+                <div className="mb-16 flex-1 justify-center">
                   <div className="mb-5 flex justify-start gap-10">
                     <div>
                       {" "}
                       <img
                         src={`http://localhost:5000/images/${roommateDetails?.roomateList?.contact_person?.image}`}
                         alt=""
-                        className="w-16 h-16 rounded-lg"
+                        className="md:w-28 md:h-16 rounded-lg w-28 h-14"
                       />
                     </div>
-                    <div>
-                      <h2 className="lg:text-xl font-medium text-black">
+                    <div className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
+                      <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                         User Name:{" "}
                         {
                           roommateDetails?.roomateList?.contact_person
@@ -251,11 +251,11 @@ const RoommateDetails = () => {
                         }{" "}
                         {roommateDetails?.roomateList?.contact_person?.lastName}
                       </h2>
-                      <h2 className="lg:text-xl font-medium text-black">
+                      <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                         Home type:{" "}
                         {roommateDetails?.roomateList?.description?.bedroomType}
                       </h2>
-                      <p className="text-black  font-medium inline-block md:text-lg mt-1">
+                      <p className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                         Location:{" "}
                         {
                           roommateDetails?.roomateList?.description?.location
@@ -265,11 +265,11 @@ const RoommateDetails = () => {
                     </div>
                   </div>
                   {/* div for right side */}
-                  <div className="flex flex-col gap-3 px-6">
-                    <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3  mt-3 shadow-lg border border-gray-150 rounded-lg">
+                  <div className="flex flex-col gap-3 mt-4">
+                  <div className="h-auto p-5 lg:w-[416px] md:w-[356px] max-w-[420px] block md:hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                       <div>
                         <div className="flex items-center justify-between">
-                          <h2 className="text-3xl font-bold my-5">
+                          <h2 className="lg:text-3xl md:text-base text-sm font-bold md:my-5">
                             ${roommateDetails?.roomateList?.description?.rent}
                           </h2>
                           <svg
@@ -292,7 +292,7 @@ const RoommateDetails = () => {
                         </div>
                         <button
                           className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
-                                 transition-all duration-500 capitalize items-center flex justify-center gap-5"
+                                 transition-all duration-500 capitalize  items-center flex justify-center gap-5"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -315,7 +315,7 @@ const RoommateDetails = () => {
                         onClick={() => setOpenReportModal(true)}
                         className="rounded-md  px-5 py-[6px]  text-black  block md:hidden text-sm md:text-base"
                       >
-                        <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
+                       <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1em"
@@ -470,11 +470,11 @@ const RoommateDetails = () => {
               </div>
             </div>
             {/* div for right side */}
-            <div className="flex flex-col gap-3 px-6">
-              <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
+            <div className="flex flex-col gap-3">
+            <div className="h-auto p-5 md:w-[360px] lg:w-[400px] w-96 max-w-[400px] md:block hidden  md:mt-3 rounded-lg shadow-lg border border-gray-150">
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-3xl font-bold my-5">
+                <div className="flex items-center justify-between">
+                  <h2 className="lg:text-3xl md:text-base font-bold md:my-5">
                       ${roommateDetails?.roomateList?.description?.rent}
                     </h2>
                     <svg
@@ -497,7 +497,7 @@ const RoommateDetails = () => {
                   </div>
                   <button
                     className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
-                                 transition-all duration-500 capitalize items-center flex justify-center gap-5"
+                                 transition-all duration-500 capitalize items-center md:text-base lg:text-lg flex justify-center gap-5"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -514,12 +514,12 @@ const RoommateDetails = () => {
                   </button>
                 </div>
               </div>
-              <div>
+              <div className="md:block hidden">
                 <button
                   onClick={() => setOpenReportModal(true)}
-                  className="rounded-md  px-5 py-[6px]  text-black"
+                  className="rounded-md  text-black"
                 >
-                  <div className="md:w-[416px] max-w-[416px] h-fit p-5 underline flex justify-center items-center gap-5">
+                   <div className="md:w-[360px] lg:w-[400px] w-96 max-w-[380px] h-fit p-5 underline flex justify-center items-center gap-5">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="1em"
@@ -595,7 +595,7 @@ const RoommateDetails = () => {
           </div>
 
           {/* map */}
-          <div className="relative h-full max-md:min-h-[350px] mt-16">
+          <div className="relative h-full max-md:min-h-[350px] mt-16 px-3">
             {map}
           </div>
         </div>

@@ -282,7 +282,7 @@ const fetchData = async () => {
               <button
                 key={i}
                 onClick={() => paginate(i + 1)}
-                className={`join-item px-3 md:px-4 md:text-base btn rounded-md btn-outline mr-2 ${
+                className={`join-item px-3 md:px-4 md:text-base btn rounded-md btn-outline mr-1 md:mr-2 ${
                   currentPage === i + 1 ? "bg-green-400 text-white" : ""
                 }`}
               >
@@ -291,7 +291,7 @@ const fetchData = async () => {
             )
           )}
           <button
-            className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-2"
+            className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-1 md:mr-2"
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === Math.ceil(flatData.length / flatsPerPage)}
           >

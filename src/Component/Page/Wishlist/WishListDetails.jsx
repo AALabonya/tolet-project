@@ -343,7 +343,7 @@ console.log(maps);
                  </div>
                  <button
                    className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
-                                transition-all duration-500 capitalize items-center flex justify-center gap-5"
+                                transition-all duration-500 capitalize items-center flex justify-center gap-5 lg:text-xl text-sm md:text-base  font-medium"
                  >
                    <svg
                      xmlns="http://www.w3.org/2000/svg"

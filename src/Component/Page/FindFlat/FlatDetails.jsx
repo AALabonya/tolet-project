@@ -16,7 +16,12 @@ const FlatDetails = () => {
   const [reportMessage, setReportMessage] = useState("");
 
   const { data: flatData } = useLoaderData();
-  // console.log(flatData);
+
+  console.log(
+    flatData?.flatList?.description?.location?.lat,
+    flatData?.flatList?.description?.location?.lon
+  );
+
   const { auths } = useContext(AuthContext);
   const user = auths?.user;
 
@@ -110,7 +115,7 @@ const FlatDetails = () => {
           <img
             src={`http://localhost:5000/images/${flatData?.flatList?.images[0]}`}
             alt=""
-            className="lg:h-[500px] md:h-[400px] h-[250px]  max-h-screen  w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
+            className="lg:h-[500px] md:h-[400px] h-[250px]  max-h-screen object-cover  w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
           <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden ">
             <div className=" bg-white text-black rounded-lg shadow-lg border-2  mr-3">
@@ -167,21 +172,21 @@ const FlatDetails = () => {
             <img
               src={`http://localhost:5000/images/${flatData?.flatList?.images[1]}`}
               alt=""
-              className="w-full h-full max-h-screen border bg-cover border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
+              className="w-full h-full max-h-screen object-cover border border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-tr-2xl ">
             <img
               src={`http://localhost:5000/images/${flatData?.flatList?.images[2]}`}
               alt=""
-              className="w-full h-full border bg-cover border-gray-150 md:block hidden "
+              className="w-full h-full border object-cover border-gray-150 md:block hidden "
             />
           </div>
           <div className="bg-cover overflow-hidden relative ">
             <img
               src={`http://localhost:5000/images/${flatData?.flatList?.images[3]}`}
               alt=""
-              className="w-full h-full border bg-cover border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
+              className="w-full h-full border object-cover border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
             />
           </div>
           <div className="bg-contain overflow-hidden relative ">
@@ -214,7 +219,7 @@ const FlatDetails = () => {
                           : "scale-0 opacity-0 duration-150"
                       }`}
                     >
-                       <div className="flex justify-end">
+                      <div className="flex justify-end">
                         <button
                           onClick={() => setOpenModal(false)}
                           className="rounded-sm border border-red-600 px-6 py-[6px] text-red-600 duration-150 hover:bg-red-600 hover:text-white"
@@ -230,11 +235,10 @@ const FlatDetails = () => {
                           <img
                             src={`http://localhost:5000/images/${image}`}
                             alt=""
-                            className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                            className="lg:h-[500px] md:h-[400px] h-56 w-full object-cover mb-4 border border-gray-150 rounded-md"
                           />
                         </div>
                       ))}
-                     
                     </div>
                   </div>
                 </div>
@@ -269,30 +273,29 @@ const FlatDetails = () => {
                           <h2 className="lg:text-3xl font-bold md:my-5">
                             ${flatData?.flatList?.description?.rent}
                           </h2>
-                         
-                            <button
-                              className="flex items-center"
-                              onClick={() => addToWishlist(flatData)}
+
+                          <button
+                            className="flex items-center"
+                            onClick={() => addToWishlist(flatData)}
+                          >
+                            <svg
+                              width={30}
+                              className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                              style={{ cursor: "pointer" }}
                             >
-                              <svg
-                                width={30}
-                                className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-white"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                style={{ cursor: "pointer" }}
-                              >
-                                <g strokeWidth="0"></g>
-                                <g
-                                  id="SVGRepo_tracerCarrier"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                ></g>
-                                <g id="SVGRepo_iconCarrier">
-                                  <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                                </g>
-                              </svg>
-                            </button>
-                         
+                              <g strokeWidth="0"></g>
+                              <g
+                                id="SVGRepo_tracerCarrier"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              ></g>
+                              <g id="SVGRepo_iconCarrier">
+                                <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
+                              </g>
+                            </svg>
+                          </button>
                         </div>
                         <button
                           className="text-black px-2 py-2 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
@@ -431,31 +434,31 @@ const FlatDetails = () => {
                     <h2 className="lg:text-3xl md:text-base font-bold md:my-5">
                       ${flatData?.flatList?.description?.rent}
                     </h2>
-                    
-                      <button
-                        className="flex items-center"
-                        onClick={() => addToWishlist(flatData)}
+
+                    <button
+                      className="flex items-center"
+                      onClick={() => addToWishlist(flatData)}
+                    >
+                      <svg
+                        width={30}
+                        className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ cursor: "pointer" }}
                       >
-                        <svg
-                          width={30}
-                          className="hover:fill-red-500 hover:stroke-red-500 stroke-2 fill-transparent stroke-black"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          style={{ cursor: "pointer" }}
-                        >
-                          <g strokeWidth="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
-                          </g>
-                        </svg>
-                      </button>
-                    </div>
-                 
+                        <g strokeWidth="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"></path>
+                        </g>
+                      </svg>
+                    </button>
+                  </div>
+
                   <button
                     className="text-black px-4 py-3 mx-2 w-full border-2 mt-16 border-black rounded-lg bg-green-400  
                                   capitalize items-center flex justify-center gap-5"
@@ -555,9 +558,17 @@ const FlatDetails = () => {
               </div>
             </div>
           </div>
-          <div className="relative h-full max-md:min-h-[450px] mt-16 px-3">
-            {map}
-          </div>
+          {/* {lat === 23.8041 && lon === 90.4152 ? "": 
+            <div className="relative h-full max-md:min-h-[450px] mt-16 px-3">
+              {map}
+            </div>
+      } */}
+          
+          {flatData?.flatList?.description?.location?.lat != 22.9372087 && (
+              <div className="relative h-full max-md:min-h-[450px] mt-16 px-3">
+                {map}
+              </div>
+            )}
         </div>
       </div>
     </>

@@ -487,14 +487,7 @@ const closeHandleModal=()=>{
                                 onChange={(e) => setAddress(e.target.value)}
                               />
                             )}
-                            {/* <div
-                              onClick={() => setShowAddress(!showAddress)}
-                              className="cursor-pointer"
-                            >
-                              {showAddress
-                                ? "Add Manually Address"
-                                : "Default Address"}
-                            </div> */}
+                          
                           </Grid>
                         }
                         <Grid item sm={12} md={12}>

@@ -114,7 +114,7 @@ const RoommateDetails = () => {
           <img
             src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[0]}`}
             alt=""
-            className="lg:h-[500px] md:h-[400px] h-[250px]  max-h-screen w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
+            className="lg:h-[500px] md:h-[400px] h-[250px] object-cover  max-h-screen w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
           <div className="absolute left-0  bottom-[5%] w-full flex justify-end text-center md:hidden ">
             <div className=" bg-white text-black rounded-lg shadow-lg border-2 mr-3">
@@ -156,7 +156,7 @@ const RoommateDetails = () => {
                         <img
                           src={`http://localhost:5000/images/${image}`}
                           alt=""
-                          className="lg:h-[500px] md:h-[400px] h-56 w-full mb-4 border border-gray-150 rounded-md"
+                          className="lg:h-[500px] md:h-[400px] object-cover h-56 w-full mb-4 border border-gray-150 rounded-md"
                         />
                       </div>
                     ))}
@@ -171,28 +171,28 @@ const RoommateDetails = () => {
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[1]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
+              className="w-full h-full border object-cover  border-gray-150 md:block hidden rounded-tl-2xl  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-tr-2xl">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[2]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden "
+              className="w-full h-full border object-cover  border-gray-150 md:block hidden "
             />
           </div>
           <div className="bg-cover overflow-hidden relative ">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[3]}`}
               alt=""
-              className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
+              className="w-full h-full border object-cover  border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
             />
           </div>
           <div className="bg-cover overflow-hidden relative rounded-br-2xl">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[4]}`}
               alt=""
-              className="w-full h-full rounded-br-2xl border border-gray-150 md:block hidden"
+              className="w-full h-full rounded-br-2xl object-cover  border border-gray-150 md:block hidden"
             />
             <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center ">
               <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2  mr-3 md:block hidden">

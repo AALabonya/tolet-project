@@ -6,61 +6,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
 
-
 const MyAccount = () => {
-  // const [formData, setFormData] = useState({});
-  const [fileList, setFileList] = useState([]);
   const { auths, setAuths } = useContext(AuthContext);
   const user = auths?.user;
   console.log("🚀 ~ MyAccount ~ user:", user);
-  const [showName, setShowName] = useState({});
-  const update = () => {};
-  useEffect(() => {
-    update();
-  }, []);
-  const onFinish = async (values) => {
-    console.log("values", values);
-    const data = new FormData();
-    data.append("firstName", values.firstName || user?.firstName);
-    data.append("lastName", values.lastName || user?.lastName);
-    data.append("age", values.age || user?.age);
-    data.append("address", values.address || user?.location?.address);
-    data.append("city", values.city || user?.location?.city);
-    data.append("postalCode", values.postalCode || user?.location?.postalCode);
-    data.append("phone", values.contactNumber || user?.phone);
-    data.append("password", values?.password || "");
-    data.append("images", fileList[0]?.originFileObj || "");
-    data.append("user_image", user?.user_image);
-    data.append("user_pass", user?.password);
-
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    const url = `http://localhost:5000/update/${user?.email}`;
-
-    try {
-      const response = await axios.put(url, data, config);
-      if (fileList.length > 0) {
-        localStorage.setItem("access-token", response.data.token);
-        setAuths({ status: "manual", user: response.data.user });
-      } else {
-        setAuths({ status: "firebase", user: response.data.user });
-      }
-      update();
-      console.log("REsponse", response);
-      message.success("Profile Update successful");
-    } catch (error) {
-      console.error("Update failed:", error?.response?.data?.error);
-      message.error("Failed to update. Please try again later.");
-    }
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || "",
@@ -72,43 +21,50 @@ const MyAccount = () => {
     phone: user?.phone || "",
     password: "",
   });
-
-  const handleChange = (e) => {
-    if (e.target.name === "images") {
-      // Handle image file separately
-      setFormData({
-        ...formData,
-        images: e.target.files[0] // Use 'images' instead of 'image'
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-      });
-    }
-  };
-
-  console.log(formData);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const formDataToSend = new FormData();
-      // Append all form fields to FormData
-      for (const key in formData) {
-        formDataToSend.append(key, formData[key]);
-      }
-  
-      const response = await axios.patch(`http://localhost:5000/update/${user?.email}`, formDataToSend);
+      formDataToSend.append("firstName", formData.firstName || user?.firstName);
+      formDataToSend.append("lastName", formData.lastName || user?.lastName);
+      formDataToSend.append("age", formData.age || user?.age);
+      formDataToSend.append("address", formData.address || user?.location?.address);
+      formDataToSend.append("city", formData.city || user?.location?.city);
+      formDataToSend.append("postalCode", formData.postalCode || user?.location?.postalCode);
+      formDataToSend.append("phone", formData.phone || user?.phone);
+      formDataToSend.append("password", formData.password);
+      formDataToSend.append("images", formData.images);
+      formDataToSend.append("user_image", user?.user_image);
+      formDataToSend.append("oldPass", user?.password);
+      formDataToSend.append("isUpdate", formData.password ? "False" : "True");
+
+      const response = await axios.patch(
+        `http://localhost:5000/update/${user?.email}`,
+        formDataToSend
+      );
+
       console.log("Response", response);
-      message.success("Profile Update successful");
-      window.location.reload();
-      // Handle success
+      const { token, user: updatedUser } = response.data;
+      if (updatedUser) {
+        message.success("Profile update successful");
+        setAuths({ status: "manual", user: updatedUser });
+        localStorage.setItem("access-token", token);
+      } else {
+        message.error(response.data.toast || "Failed to update profile");
+      }
     } catch (error) {
-      console.error("Update failed:", error?.response?.data?.error);
-      // Handle error
+      console.error("Update failed:", error.response?.data?.error);
+      message.error("Failed to update profile");
     }
   };
-
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "images") {
+      setFormData({ ...formData, images: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
 
   return (
    <>
@@ -117,14 +73,7 @@ const MyAccount = () => {
        <div className="lg:w-[35%] bg-white shadow-lg">
             <img
                 alt="profile"
-                src={
-                  auths.status === "manual"
-                    ? `http://localhost:5000/images/${user?.user_image}`
-                    : auths.status === "firebase"
-                    ? user?.user_image ||
-                      `http://localhost:5000/images/${user?.user_image}`
-                    : " "
-                }
+                src={user?.user_image}
                 className="mx-auto object-cover rounded-full h-16 w-16 lg:h-32 lg:w-32"
               />
               <div className="flex px-16 mt-12">

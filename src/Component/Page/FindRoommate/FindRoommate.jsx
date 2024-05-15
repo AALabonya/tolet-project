@@ -271,7 +271,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
       {/* roommate cards  */}
 
       <div className="flex justify-center mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 lg:px-14 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 lg:px-9 px-6">
         {currentRoommates.map((roommate, index) => (
           <Link
             key={index}
@@ -279,7 +279,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
             className="block"
           >
             <div className="bg-white md:px-4 py-5 rounded-lg ">
-              <div className="relative grid h-[15rem] md:h-[20rem] w-full max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
+              <div className="relative grid h-[15rem] md:h-[20rem] w-full lg:max-w-[22rem] flex-col items-end justify-end overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
                 <div
                   className="absolute inset-0 m-0 h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150 w-full overflow-hidden rounded-none bg-black/40   bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
                   style={{
@@ -320,7 +320,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
                   />
                 </div>
               </div>
-              <div className="mt-3 flex-1 text-sm text-center">
+              <div className="mt-3 flex-1 text-sm">
                 <div>
                   <h3 className="text-gray-900 group-hover:underline group-hover:underline-offset-4">
                     Location:{" "}

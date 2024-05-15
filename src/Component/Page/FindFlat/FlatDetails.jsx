@@ -85,12 +85,12 @@ const FlatDetails = () => {
     return (
         <>
             {/* details hero section  */}
-            <div className="w-11/12 mx-auto lg:flex mt-3 rounded-lg gap-3 mb-5">
+            <div className="w-11/12 mx-auto lg:flex mt-3 md:rounded-lg lg:rounded-none gap-3 mb-5">
                 <div className="lg:w-[50%] relative ">
                     <img
                         src={`http://localhost:5000/images/${flatData?.flatList?.images[0]}`}
                         alt=""
-                        className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-l-2xl border border-gray-150 mb-3"
+                        className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[280px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
                     />
                     <div className="absolute left-0  bottom-[5%] w-full flex justify-end  text-center md:hidden ">
                             <div className=" bg-white text-black rounded-lg shadow-lg border-2  mr-3">
@@ -173,7 +173,7 @@ const FlatDetails = () => {
                         <img
                             src={`http://localhost:5000/images/${flatData?.flatList?.images[3]}`}
                             alt=""
-                            className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl  lg:rounded-tl"
+                            className="w-full h-full border border-gray-150 md:block hidden rounded-bl-2xl lg:rounded-none  lg:rounded-tl"
                         />
                     </div>
                     <div className="bg-cover overflow-hidden relative ">

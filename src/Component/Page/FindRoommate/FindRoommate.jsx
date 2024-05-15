@@ -345,11 +345,11 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
       <div className=" flex flex-wrap justify-center mb-10 mt-24">
         <button
-          className="join-item btn btn-outline mr-2"
+           className="join-item px-2 py-1 md:text-base text-sm rounded-md btn btn-outline mr-2"
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          &larr; Previous page
+          &larr; Previous
         </button>
         {Array.from(
           { length: Math.ceil(roomMate.length / roommatesPerPage) },
@@ -366,7 +366,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
           )
         )}
         <button
-          className="join-item btn btn-outline mr-2"
+          className="join-item px-2 py-1 md:text-base rounded-md text-sm btn btn-outline mr-1 md:mr-2"
           onClick={() => paginate(currentPage + 1)}
           disabled={
             currentPage === Math.ceil(roomMate.length / roommatesPerPage)

@@ -263,7 +263,7 @@ const FlatDetails = () => {
             <div className=" md:px-0 md:w-3/4 ">
               <div className=" md:px-0 ">
                 <div className="mb-16 flex-1 justify-center">
-                  <div className="mb-5">
+                  <div className="mb-5 mx-5 lg:mx-0">
                     <h2 className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">
                       Home Type: {flatData?.flatList?.description?.type}
                     </h2>
@@ -403,7 +403,7 @@ const FlatDetails = () => {
                     </div>
                   </div>
 
-                  <div className="border-t-2 border-b-2">
+                  <div className="border-t-2 border-b-2 mx-5 lg:mx-0">
                     <h1 className="mt-8 lg:text-3xl  mb-[12px] font-semibold text-black">
                       {" "}
                       Basic Information

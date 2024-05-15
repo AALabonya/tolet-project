@@ -46,7 +46,7 @@ const DashNav = ({ toggleSidebar }) => {
             <div tabIndex={0} role="button" className=" relative font-medium text-base text-black mx-3 flex items-center h-full">
               <img
                 className="rounded-lg max-w-[48px] max-h-[48]"
-                src={`${user?.photoURL}`}
+                src={user?.user_image}
               />
             </div>
             <ul className="menu dropdown-content z-[1] bg-white w-fit rounded-[5px] px-0 absolute top-16"

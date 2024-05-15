@@ -16,6 +16,7 @@ const SignUp = () => {
   const navigation = useNavigation();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  console.log("🚀 ~ SignUp ~ from:", from)
   const [fileList, setFileList] = useState([]);
 
   if (navigation.state === "loading") {
@@ -81,94 +82,99 @@ const SignUp = () => {
     },
     fileList,
   };
-  const handleGoogle = () => {
-    googleSignIn()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+  const handleGoogle = async () => {
+    try {
+      const result = await googleSignIn();
+      const user = result.user;
 
-        const fullName = user.displayName.split(" ");
-        const firstName = fullName[0];
-        const lastName = fullName.slice(1).join(" ");
+      const fullName = user.displayName.split(" ");
+      const firstName = fullName[0];
+      const lastName = fullName.slice(1).join(" ");
 
-        console.log(user);
-        const saveUser = {
-          firstName: firstName,
-          lastName: lastName,
-          email: user.email,
-          password: "",
-          user_image: user?.photoURL,
-          age: "",
-          phone,
-          location: {
-            address: "",
-            city: "",
-            postalCode: "",
-          },
-        };
-        console.log(saveUser);
-        axios
-          .post("http://localhost:5000/user", saveUser, {
+      const saveUser = {
+        firstName: firstName,
+        lastName: lastName,
+        email: user.email,
+        user_image: user?.photoURL,
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/user",
+          saveUser,
+          {
             headers: {
               "Content-Type": "application/json",
             },
-          })
-          .then(() => {
-            message.success("Login successful"); // Display success message
-            navigate(from, { replace: true });
-          })
-          .catch((error) => {
-            console.error("Error posting user data:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("Google sign-in error:", error.message);
-      });
+          }
+        );
+        console.log(response.data)
+        const { token, user } = response.data;
+        if (user) {
+          console.log("🚀 ~ handleGoogleLogin ~ userData:", user);
+          setAuths({ status: "firebase", user});
+          localStorage.setItem("access-token", token);
+          message.success("Login successful"); // Display success message
+          navigate(from, { replace: true });
+          navigate("/");
+        }
+        
+      } catch (error) {
+        console.error("Error posting user data:", error);
+      }
+    } catch (error) {
+      console.error("Google sign-in error:", error.message);
+    }
   };
-  const handleFB = () => {
-    facebookSignIn()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+  const handleFB = async () => {
+    try {
+      const result = await facebookSignIn();
+      const user = result.user;
 
-        const fullName = user.displayName.split(" ");
-        const firstName = fullName[0];
-        const lastName = fullName.slice(1).join(" ");
+      const fullName = user.displayName.split(" ");
+      const firstName = fullName[0];
+      const lastName = fullName.slice(1).join(" ");
 
-        console.log(user);
-        const saveUser = {
-          firstName: firstName,
-          lastName: lastName,
-          email: user.email,
-          password: "",
-          user_image: user?.photoURL,
-          age: "",
-          phone,
-          location: {
-            address: "",
-            city: "",
-            postalCode: "",
-          },
-        };
-        console.log(saveUser);
-        axios
-          .post("http://localhost:5000/user", saveUser, {
+      const saveUser = {
+        firstName: firstName,
+        lastName: lastName,
+        email: user.email,
+        user_image: user?.photoURL,
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/user",
+          saveUser,
+          {
             headers: {
               "Content-Type": "application/json",
             },
-          })
-          .then(() => {
-            message.success("Login successful");
-            navigate(from, { replace: true });
-          })
-          .catch((error) => {
-            console.error("Error posting user data:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("Google sign-in error:", error.message);
-      });
+          }
+        );
+        console.log(response.data)
+        const { token, user } = response.data;
+        if (user) {
+          console.log("🚀 ~ handleGoogleLogin ~ userData:", user);
+          setAuths({ status: "firebase", user});
+          localStorage.setItem("access-token", token);
+          message.success("Login successful"); // Display success message
+          navigate(from, { replace: true });
+          navigate("/");
+        }
+        
+      } catch (error) {
+        console.error("Error posting user data:", error);
+      }
+    } catch (error) {
+      console.error("Google sign-in error:", error.message);
+    }
   };
+
+  if(auths?.user)
+    {
+      navigate(from, { replace: true });
+    }
   return (
     <div className="w-full flex justify-center px-4">
       <div className="flex justify-center lg:flex-row flex-col lg:gap-16 justify-items-center items-center">

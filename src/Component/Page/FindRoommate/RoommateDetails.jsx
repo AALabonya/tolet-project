@@ -95,10 +95,10 @@ const [center, setCenter] = useState([23.8041, 90.4152]);
           <img
             src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[0]}`}
             alt=""
-            className=" h-[500px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
+            className="lg:h-[800px] md:h-[400px] md:max-h-[500px] lg:max-h-[500px] max-h-[300px] w-full rounded-2xl lg:rounded-none lg:rounded-l-2xl  xl:rounded-l-2xl border border-gray-150 mb-3"
           />
            <div className="absolute left-0  bottom-[5%] w-full flex justify-end text-center md:hidden ">
-              <div className=" bg-white px-3 py-2 text-black rounded-lg shadow-lg border-2 mr-3">
+              <div className=" bg-white text-black rounded-lg shadow-lg border-2 mr-3">
                 <div>
                   <button
                     onClick={() => setOpenModal(true)}
@@ -147,7 +147,7 @@ const [center, setCenter] = useState([23.8041, 90.4152]);
               </div>
             </div>
         </div>
-        <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  h-[500px] gap-3">
+        <div className="lg:w-[50%] grid grid-cols-1 md:grid-cols-2  lg:h-[500px] gap-3">
           <div className="bg-cover overflow-hidden relative ">
             <img
               src={`http://localhost:5000/images/${roommateDetails?.roomateList?.images[1]}`}
@@ -231,7 +231,7 @@ const [center, setCenter] = useState([23.8041, 90.4152]);
       {/* card details information  */}
       <div>
         {/* details sections starts */}
-        <div className="mx-auto mt-16 md:px-16 ">
+        <div className="mx-auto lg:mt-16 md:px-16 mt-5">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="main_details px-5 md:px-0 md:w-3/4">
               <div className=" px-5 md:px-0 md:w-3/4">

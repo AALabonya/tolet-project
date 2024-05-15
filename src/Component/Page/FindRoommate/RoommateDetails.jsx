@@ -239,7 +239,7 @@ const RoommateDetails = () => {
                       <img
                         src={`http://localhost:5000/images/${roommateDetails?.roomateList?.contact_person?.image}`}
                         alt=""
-                        className="md:w-28 md:h-16 rounded-lg w-28 h-14"
+                        className="md:w-16 md:h-16 rounded-lg w-28 h-14"
                       />
                     </div>
                     <div className="lg:text-xl text-sm md:text-base capitalize  font-medium text-black">

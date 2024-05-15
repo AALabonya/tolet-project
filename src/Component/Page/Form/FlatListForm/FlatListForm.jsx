@@ -40,8 +40,12 @@ export default function CreateFlatListForm() {
   const mapRef = React.useRef(null);
   const [activeStep, setActiveStep] = React.useState(0);
   const [showAddress, setShowAddress] = React.useState(true);
-  const [customAddress, setCustomAddress] = React.useState(null);
-  const [defaultAddress, setDefaultAddress] = React.useState();
+  const [images, setImages] = React.useState([]);
+  const [image, setImage] = React.useState([]);
+  const [address, setAddress] = React.useState("");
+  const [center, setCenter] = React.useState([23.8041, 90.4152]);
+  const [openModal, setOpenModal] = React.useState(false);
+  const [cityName, setCityName] = React.useState("");
   const [formData, setFormData] = React.useState({
     type: "",
     date: "",
@@ -66,8 +70,7 @@ export default function CreateFlatListForm() {
   const navigate = useNavigate();
   // console.log("user",auths?.user?.email);
 
-  const [images, setImages] = React.useState([]);
-  const [image, setImage] = React.useState([]);
+
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -203,9 +206,9 @@ export default function CreateFlatListForm() {
 
     return null;
   };
-  const [address, setAddress] = React.useState("");
+ 
   console.log(address, "ggdgsdhgdhj");
-//   console.log(defaultAddress);
+  //   console.log(defaultAddress);
   const handleClick = (event) => {
     const { lat, lng } = event.latlng;
     // console.log(event);
@@ -220,12 +223,11 @@ export default function CreateFlatListForm() {
         setAddress(response.data.display_name);
       })
       .catch((error) => {
-        console.error("Error fetching address:", error)});
+        console.error("Error fetching address:", error);
+      });
   };
 
-  const [center, setCenter] = React.useState([23.8041, 90.4152]);
-  const [openModal, setOpenModal] = React.useState(false);
-  const [cityName, setCityName] = React.useState("");
+
 
   React.useEffect(() => {
     if (mapRef.current) {
@@ -317,7 +319,7 @@ export default function CreateFlatListForm() {
             ) : (
               <React.Fragment>
                 <Typography sx={{ mt: 2, mb: 1 }} style={{ marginTop: "45px" }}>
-                  {activeStep === 0 &&(
+                  {activeStep === 0 && (
                     <form>
                       <Grid container spacing={1}>
                         <Grid item sm={12} md={6}>
@@ -468,7 +470,6 @@ export default function CreateFlatListForm() {
                                 id="name"
                                 name="address"
                                 placeholder="Address"
-                               
                               />
                             ) : (
                               <input
@@ -476,17 +477,18 @@ export default function CreateFlatListForm() {
                                 fullWidth
                                 id="name"
                                 name="address"
-                                className="w-full "
-                                placeholder="custom Address"
-                                onChange={(e) =>
-                                 setAddress(e.target.value)
-                                }
+                                className="w-full px-5 py-3.5 border rounded-md"
+                                placeholder="Enter Your Address"
+                                onChange={(e) => setAddress(e.target.value)}
                               />
                             )}
-                            <div onClick={() => setShowAddress(!showAddress)}>
+                            <div
+                              onClick={() => setShowAddress(!showAddress)}
+                              className="cursor-pointer"
+                            >
                               {showAddress
-                                ? "Add Custom Address"
-                                : "default Address"}
+                                ? "Add Manually Address"
+                                : "Default Address"}
                             </div>
                           </Grid>
                         }
@@ -638,29 +640,40 @@ export default function CreateFlatListForm() {
                                 />
                               </Grid>
                             </Grid>
-                            {
-                                                          formData.type &&
-                                                          formData.date &&
-                                                          formData.bedroom &&
-                                                          formData.bathroom &&
-                                                          formData.size &&
-                                                          formData.rent &&
-                                                          cityName &&
-                                                          address && images.length > 0 && formData.firstName &&  formData.lastName && formData.userCity && formData.phone && image ? <Button
-                                                          type="submit"
-                                                          fullWidth
-                                                          onClick={
-                                                              handleSubmit
-                                                          }
-                                                          variant="contained"
-                                                          sx={{
-                                                              mt: 3,
-                                                              mb: 2,
-                                                          }}
-                                                      >
-                                                          Submit
-                                                      </Button> : <button disabled className="bg-gray-300 w-full py-2 px-3 my-2">Submit</button>
-                                                        }
+                            {formData.type &&
+                            formData.date &&
+                            formData.bedroom &&
+                            formData.bathroom &&
+                            formData.size &&
+                            formData.rent &&
+                            cityName &&
+                            address &&
+                            images.length > 0 &&
+                            formData.firstName &&
+                            formData.lastName &&
+                            formData.userCity &&
+                            formData.phone &&
+                            image ? (
+                              <Button
+                                type="submit"
+                                fullWidth
+                                onClick={handleSubmit}
+                                variant="contained"
+                                sx={{
+                                  mt: 3,
+                                  mb: 2,
+                                }}
+                              >
+                                Submit
+                              </Button>
+                            ) : (
+                              <button
+                                disabled
+                                className="bg-gray-300 w-full py-2 px-3 my-2"
+                              >
+                                Submit
+                              </button>
+                            )}
                           </Box>
                         </Paper>
                       </div>
@@ -668,58 +681,50 @@ export default function CreateFlatListForm() {
                   )}
                 </Typography>
                 <Box
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        pt: 2,
-                                    }}
-                                >
-                                    <Button
-                                        color="inherit"
-                                        disabled={activeStep === 0}
-                                        onClick={handleBack}
-                                        sx={{ mr: 1 }}
-                                    >
-                                        Back
-                                    </Button>
-                                    <Box sx={{ flex: "1 1 auto" }} />
-                                    {isStepOptional(activeStep) && (
-                                        <Button
-                                            color="inherit"
-                                            onClick={handleSkip}
-                                            sx={{ mr: 1 }}
-                                        >
-                                            Skip
-                                        </Button>
-                                    )}
-                                    {activeStep === 0 && formData.type &&
-                                        formData.date &&
-                                        formData.bedroom &&
-                                        formData.bathroom &&
-                                        formData.size &&
-                                        formData.rent &&
-                                        cityName &&
-                                        address && (
-                                            <Button onClick={handleNext1}>
-                                                {activeStep === steps.length - 1
-                                                    ? "Finish"
-                                                    : "Next"}
-                                            </Button>
-                                        )}
-                                    {activeStep === 1 && images.length > 0 && (
-                                            <Button onClick={handleNext1}>
-                                                {activeStep === steps.length - 1
-                                                    ? "Finish"
-                                                    : "Next"}
-                                            </Button>
-                                        )}
-                                </Box>
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    pt: 2,
+                  }}
+                >
+                  <Button
+                    color="inherit"
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    sx={{ mr: 1 }}
+                  >
+                    Back
+                  </Button>
+                  <Box sx={{ flex: "1 1 auto" }} />
+                  {isStepOptional(activeStep) && (
+                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                      Skip
+                    </Button>
+                  )}
+                  {activeStep === 0 &&
+                    formData.type &&
+                    formData.date &&
+                    formData.bedroom &&
+                    formData.bathroom &&
+                    formData.size &&
+                    formData.rent &&
+                    cityName &&
+                    address && (
+                      <Button onClick={handleNext1}>
+                        {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                      </Button>
+                    )}
+                  {activeStep === 1 && images.length > 0 && (
+                    <Button onClick={handleNext1}>
+                      {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                    </Button>
+                  )}
+                </Box>
               </React.Fragment>
             )}
           </Box>
         </div>
       </div>
-      {/* formData.type && formData.date && formData.bedroom && formData.bathroom && formData.size && formData.rent && formData.city && formData.address && formData.postalCode */}
       <div className="flex justify-center">
         <div className="md:hidden overflow-hidden">
           <Box sx={{ maxWidth: 270 }}>
@@ -845,7 +850,7 @@ export default function CreateFlatListForm() {
                                 onChange={handleChange}
                               />
                             </Grid>
-                            <Grid item sm={12} md={6}>
+                            {/* <Grid item sm={12} md={6}>
                               <InputLabel>Address</InputLabel>
                               <TextField
                                 required
@@ -858,13 +863,15 @@ export default function CreateFlatListForm() {
                                 placeholder="Address"
                                 onChange={handleChange}
                               />
-                            </Grid>
+                            </Grid> */}
                             <Grid item sm={12} md={6}>
-                              <InputLabel>Enter City</InputLabel>
+                              <InputLabel>City</InputLabel>
                               <FormControl
                                 sx={{
-                                  m: 1,
-                                  minWidth: 120,
+                                  width: "100%",
+                                  "@media (max-width: 768px)": {
+                                    minWidth: "unset",
+                                  },
                                 }}
                               >
                                 <Select
@@ -889,6 +896,40 @@ export default function CreateFlatListForm() {
                                   
                               </FormControl>
                             </Grid>
+                            {
+                          <Grid item sm={12} md={6}>
+                            <InputLabel>Address</InputLabel>
+
+                            {showAddress ? (
+                              <TextField
+                                required
+                                fullWidth
+                                value={address}
+                                id="name"
+                                name="address"
+                                placeholder="Address"
+                              />
+                            ) : (
+                              <input
+                                required
+                                fullWidth
+                                id="name"
+                                name="address"
+                                className="w-full px-5 py-3.5 border rounded-md"
+                                placeholder="Enter Your Address"
+                                onChange={(e) => setAddress(e.target.value)}
+                              />
+                            )}
+                            <div
+                              onClick={() => setShowAddress(!showAddress)}
+                              className="cursor-pointer"
+                            >
+                              {showAddress
+                                ? "Add Manually Address"
+                                : "Default Address"}
+                            </div>
+                          </Grid>
+                        }
                             <Grid item sm={12} md={12}>
                               <InputLabel>Zip Code</InputLabel>
                               <TextField
@@ -1040,18 +1081,40 @@ export default function CreateFlatListForm() {
                                     />
                                   </Grid>
                                 </Grid>
-                                <Button
-                                  type="submit"
-                                  fullWidth
-                                  onClick={handleSubmit}
-                                  variant="contained"
-                                  sx={{
-                                    mt: 3,
-                                    mb: 2,
-                                  }}
-                                >
-                                  Submit
-                                </Button>
+                                {formData.type &&
+                            formData.date &&
+                            formData.bedroom &&
+                            formData.bathroom &&
+                            formData.size &&
+                            formData.rent &&
+                            cityName &&
+                            address &&
+                            images.length > 0 &&
+                            formData.firstName &&
+                            formData.lastName &&
+                            formData.userCity &&
+                            formData.phone &&
+                            image ? (
+                              <Button
+                                type="submit"
+                                fullWidth
+                                onClick={handleSubmit}
+                                variant="contained"
+                                sx={{
+                                  mt: 3,
+                                  mb: 2,
+                                }}
+                              >
+                                Submit
+                              </Button>
+                            ) : (
+                              <button
+                                disabled
+                                className="bg-gray-300 w-full py-2 px-3 my-2"
+                              >
+                                Submit
+                              </button>
+                            )}
                               </Box>
                             </Paper>
                           </div>
@@ -1061,20 +1124,39 @@ export default function CreateFlatListForm() {
                     </div>
                     <Box sx={{ mb: 2 }}>
                       <div>
-                        <Button
-                          variant="contained"
-                          onClick={handleNext}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          {index === steps.length - 1 ? "Finish" : "Continue"}
-                        </Button>
-                        <Button
+                      <Button
                           disabled={index === 0}
                           onClick={handleBack}
                           sx={{ mt: 1, mr: 1 }}
                         >
                           Back
                         </Button>
+                      {index === 0 &&
+                    formData.type &&
+                    formData.date &&
+                    formData.bedroom &&
+                    formData.bathroom &&
+                    formData.size &&
+                    formData.rent &&
+                    cityName &&
+                    address && (
+                      <Button onClick={handleNext1}>
+                        {index === steps.length - 1 ? "Finish" : "Next"}
+                      </Button>
+                    )}
+                  {activeStep === 1 && images.length > 0 && (
+                    <Button onClick={handleNext1}>
+                      {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                    </Button>
+                  )}
+                        {/* <Button
+                          variant="contained"
+                          onClick={handleNext}
+                          sx={{ mt: 1, mr: 1 }}
+                        >
+                          {index === steps.length - 1 ? "Finish" : "Continue"}
+                        </Button> */}
+                       
                       </div>
                     </Box>
                   </StepContent>
@@ -1109,7 +1191,12 @@ export default function CreateFlatListForm() {
                 : "scale-0 opacity-0 duration-150"
             }`}
           >
-            <div className="w-[700px]">{map}</div>
+           <div className="flex justify-end mb-3">
+           <button onClick={() => setOpenModal(false)} className=" rounded-md border border-rose-600 px-6 py-[6px] text-rose-600 duration-150 hover:bg-rose-600 hover:text-white">
+                X
+              </button>
+           </div>
+            <div className="w-72 md:max-w-[500px] lg:max-w-[700px] md:w-[700px]">{map}</div>
           </div>
         </div>
       </div>

@@ -543,7 +543,7 @@ const MyListing = () => {
                                                         </button>
                                                     </div>
                                                     <img
-                                                        className="rounded-xl bg-black/40 w-full h-[309px]"
+                                                        className="rounded-xl bg-black/40 w-full h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150"
                                                         src={`http://localhost:5000/images/${roommate.roomateList.images[0]}`}
                                                         alt="Flat Image"
                                                     />
@@ -1203,7 +1203,7 @@ const MyListing = () => {
                                                         </button>
                                                     </div>
                                                     <img
-                                                        className="rounded-xl bg-black/40 w-full h-[309px] "
+                                                        className="rounded-xl bg-black/40 w-full h-[230px] md:h-[290px] lg:h-[309px] border border-gray-150"
                                                         src={`http://localhost:5000/images/${flat.flatList.images[0]}`}
                                                         alt="Flat Image"
                                                     />
